@@ -9,3 +9,12 @@ export const postFilePaths = fs
   .readdirSync(POSTS_PATH)
   // Only include md(x) files
   .filter((path) => /\.mdx?$/.test(path))
+
+
+
+export const SKILLS_PATH = path.join(process.cwd(), 'posts/skills')
+
+export const skillFilePaths = fs
+  .readdirSync(SKILLS_PATH)
+  .filter((path) => /\.mdx?$/.test(path))
+
