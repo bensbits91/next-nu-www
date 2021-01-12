@@ -1,15 +1,16 @@
 import Link from 'next/link'
 
-export default function MdxList({ files, list }) {
+export default function MdxList({ items }) {
+    console.log('🚀 ~ MdxList ~ items', items);
     return (
         <ul>
-            {files.map((file) => (
-                <li key={file.filePath}>
+            {items.map((item) => (
+                <li key={item.slug}>
                     <Link
-                        as={`/${list}/${file.filePath.replace(/\.mdx?$/, '')}`}
-                        href={`/${list}/[slug]`}
+                        as={`/work/${item.slug.replace(/\.mdx?$/, '')}`}
+                        href={`/work/[slug]`}
                     >
-                        <a>{file.data.title}</a>
+                        <a>{item.title}</a>
                     </Link>
                 </li>
             ))}
