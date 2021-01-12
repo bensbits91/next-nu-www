@@ -8,7 +8,7 @@ import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import { workFilePaths, WORK_PATH } from '../../utils/mdxUtils'
+import { workFilePaths, WORK_PATH } from '../../utils/workPaths'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how

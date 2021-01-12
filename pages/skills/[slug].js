@@ -8,7 +8,7 @@ import Link from 'next/link'
 import path from 'path'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import { skillFilePaths, SKILLS_PATH } from '../../utils/mdxUtils'
+import { skillsFilePaths, SKILLS_PATH } from '../../utils/skillPaths'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -83,7 +83,7 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const paths = skillFilePaths
+  const paths = skillsFilePaths
     // Remove file extensions for page paths
     .map((path) => path.replace(/\.mdx?$/, ''))
     // Map the path into the static paths object required by Next.js
