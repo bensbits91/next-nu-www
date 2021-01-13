@@ -1,19 +1,19 @@
 import Link from 'next/link'
 
-export default function RelatedSkills({ items }) {
-    console.log('🚀 ~ RelatedSkills ~ items', items);
+export default function Related({ items, list }) {
+    console.log('🚀 ~ Related ~ items', items);
     return (
         <ul>
             {items.map((item) => {
                 // const skill = 
 
                 return (
-                    <li key={item.filePath}>
+                    <li key={(item.replace(/[ \.]/g, '')).trim()}>
                         <Link
-                            as={`/${list}/${item.filePath.replace(/\.mdx?$/, '')}`}
+                            as={`/${list}/${(item.replace(/\.mdx?$/, '')).trim()}`}
                             href={`/${list}/[slug]`}
                         >
-                            <a>{item.data.title}</a>
+                            <a>{item.trim()}</a>
                         </Link>
                     </li>
                 )

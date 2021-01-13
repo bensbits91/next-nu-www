@@ -1,10 +1,3 @@
-// import fs from 'fs'
-// import MDX from '@mdx-js/runtime'
-import Link from 'next/link'
-
-
-export default function Post({ post }) {
-
-
-    return post.content
+export default function Post({ mdxSource }) {
+    return <div dangerouslySetInnerHTML={{ __html: mdxSource.renderedOutput }} />
 }
