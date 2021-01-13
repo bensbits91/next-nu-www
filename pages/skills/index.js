@@ -28,7 +28,6 @@ export function getStaticProps() {
     ]).filter(p => p.pageType === 'skills')
 
     return {
-        props: { posts },
+        props: { posts }
     }
-
 }

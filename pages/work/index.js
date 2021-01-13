@@ -26,6 +26,6 @@ export function getStaticProps() {
     ]).filter(p => p.pageType === 'work')
 
     return {
-        props: { posts },
+        props: { posts }
     }
 }

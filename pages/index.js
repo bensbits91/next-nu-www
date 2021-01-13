@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Layout from '../components/Layout'
 
-
 export default function Index() {
     return (
         <>
@@ -18,7 +17,6 @@ export default function Index() {
                 <div>
                     <Link href='/work'><a>Work</a></Link>
                 </div>
-                <div>GitHub, LinkedIn, nuTandem, email?, hire</div>
             </Layout>
         </>
     )

@@ -3,19 +3,14 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-// import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
-
-// const components = {
-//     Head,
-// }
 
 export default function SkillPage({ post, mdxSource }) {
     return (
         <>
             <Head>
                 <title>Ben Brooks - Skills - {post.title}</title>
-                <meta name='author' content='Ben Brooks'/>
+                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <div className="post-header">
@@ -44,17 +39,9 @@ export const getStaticProps = async ({ params }) => {
         'description',
         'content',
         'link',
-    ])
+    ]),
 
-    const mdxSource = await renderToString(post.content, {
-        // components,
-        // Optionally pass remark/rehype plugins
-        // mdxOptions: {
-        //     remarkPlugins: [],
-        //     rehypePlugins: [],
-        // },
-        scope: post,
-    })
+        mdxSource = await renderToString(post.content, { scope: post })
 
     return {
         props: { post, mdxSource },
@@ -65,12 +52,11 @@ export const getStaticPaths = async () => {
     const posts = getAllPosts(['slug'])
 
     return {
-        paths: posts.map((post) => {
+        paths: posts.map(post => {
             return {
                 params: { ...post },
             }
         }),
         fallback: false,
     }
-
 }
