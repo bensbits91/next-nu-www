@@ -4,17 +4,23 @@ export default function Related({ items, list }) {
     console.log('🚀 ~ Related ~ items', items);
     return (
         <ul>
-            {items.map((item) => {
-                // const skill = 
+            {items.map(item => {
+                if (item.skillPage) {
+                    return (
+                        <li key={item.skillSlug}>
+                            <Link
+                                as={`/${list}/${item.skillSlug}`}
+                                href={`/${list}/[slug]`}
+                            >
+                                <a>{item.skillPage ? item.skillPage.title : item.skillSlug}</a>
+                            </Link>
+                        </li>
+                    )
+                }
 
                 return (
-                    <li key={(item.replace(/[ \.]/g, '')).trim()}>
-                        <Link
-                            as={`/${list}/${(item.replace(/\.mdx?$/, '')).trim()}`}
-                            href={`/${list}/[slug]`}
-                        >
-                            <a>{item.trim()}</a>
-                        </Link>
+                    <li key={item.skillSlug}>
+                        {item.skillSlug}
                     </li>
                 )
             })}

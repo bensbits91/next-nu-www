@@ -1,48 +1,46 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Link from 'next/link'
-import path from 'path'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import { skillsFilePaths, SKILLS_PATH } from '../../utils/skillPaths'
+import Nav from '../../components/Nav'
+import Post from '../../components/Post'
+import Related from '../../components/Related'
+import { getPostBySlug, getAllPosts } from '../../utils/api'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
 // to handle import statements. Instead, you must include components in scope
 // here.
 const components = {
-  a: CustomLink,
-  // It also works with dynamically-imported components, which is especially
-  // useful for conditionally loading components for certain routes.
-  // See the notes in README.md for more details.
-  TestComponent: dynamic(() => import('../../components/TestComponent')),
-  Head,
+    a: CustomLink,
+    // It also works with dynamically-imported components, which is especially
+    // useful for conditionally loading components for certain routes.
+    // See the notes in README.md for more details.
+    TestComponent: dynamic(() => import('../../components/TestComponent')),
+    Head,
 }
 
-export default function SkillPage({ source, frontMatter }) {
-  const content = hydrate(source, { components })
-  return (
-    <Layout>
-      <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
-      </header>
-      <div className="post-header">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
-          <p className="description">{frontMatter.description}</p>
-        )}
-      </div>
-      <main>{content}</main>
+export default function SkillPage({ post, mdxSource }) {
+    return (
+        <Layout>
+            <header>
+                <Nav />
+            </header>
+            <div className="post-header">
+                <h1>{post.title}</h1>
+                {post.description && (
+                    <p className='description'>{post.description}</p>
+                )}
+            </div>
+            <main>
+                <Post mdxSource={mdxSource} />
+                <div>
+                    <CustomLink href={post.link}>Learn more about {post.title}</CustomLink>
+                </div>
+            </main>
 
-      <style jsx>{`
+            <style jsx>{`
         .post-header h1 {
           margin-bottom: 0;
         }
@@ -54,43 +52,55 @@ export default function SkillPage({ source, frontMatter }) {
           opacity: 0.6;
         }
       `}</style>
-    </Layout>
-  )
+        </Layout>
+    )
 }
 
 export const getStaticProps = async ({ params }) => {
-  const skillFilePath = path.join(SKILLS_PATH, `${params.slug}.mdx`)
-  const source = fs.readFileSync(skillFilePath)
+    const post = getPostBySlug(params.slug, [
+        'title',
+        'slug',
+        'description',
+        'content',
+        'link',
+    ])
 
-  const { content, data } = matter(source)
+    const mdxSource = await renderToString(post.content, {
+        components,
+        // Optionally pass remark/rehype plugins
+        mdxOptions: {
+            remarkPlugins: [],
+            rehypePlugins: [],
+        },
+        scope: post,
+    })
 
-  const mdxSource = await renderToString(content, {
-    components,
-    // Optionally pass remark/rehype plugins
-    mdxOptions: {
-      remarkPlugins: [],
-      rehypePlugins: [],
-    },
-    scope: data,
-  })
+    // const skills = post.skills.split(',').map(s => {
+    //   const skillSlug = s.trim()
 
-  return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
-  }
+    //   return {
+    //     skillSlug: skillSlug,
+    //     skillPage: getPostBySlug(skillSlug, ['title'])
+    //   }
+    // })
+
+
+    return {
+        props: { post, mdxSource/* , skills */ },
+    }
+
 }
 
 export const getStaticPaths = async () => {
-  const paths = skillsFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }))
+    const posts = getAllPosts(['slug'])
 
-  return {
-    paths,
-    fallback: false,
-  }
+    return {
+        paths: posts.map((post) => {
+            return {
+                params: { ...post },
+            }
+        }),
+        fallback: false,
+    }
+
 }

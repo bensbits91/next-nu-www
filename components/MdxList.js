@@ -7,8 +7,8 @@ export default function MdxList({ items }) {
             {items.map((item) => (
                 <li key={item.slug}>
                     <Link
-                        as={`/work/${item.slug.replace(/\.mdx?$/, '')}`}
-                        href={`/work/[slug]`}
+                        as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
+                        href={`/${item.pageType}/[slug]`}
                     >
                         <a>{item.title}</a>
                     </Link>

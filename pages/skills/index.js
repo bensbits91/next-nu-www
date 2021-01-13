@@ -1,30 +1,31 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
 import Layout from '../../components/Layout'
-import { skillsFilePaths, SKILLS_PATH } from '../../utils/skillPaths'
 import MdxList from '../../components/MdxList'
+import { getAllPosts } from '../../utils/api'
+import Nav from '../../components/Nav'
 
-export default function Index({ skills }) {
+export default function SkillIndex({ posts }) {
   return (
     <Layout>
+      <header>
+        <Nav />
+      </header>
       <h1>Skills</h1>
-      <MdxList files={skills} list='skills' />
+      <MdxList items={posts} />
     </Layout>
   )
 }
 
 export function getStaticProps() {
-  const skills = skillsFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(SKILLS_PATH, filePath))
-    const { content, data } = matter(source)
 
-    return {
-      content,
-      data,
-      filePath,
-    }
-  })
+  const posts = getAllPosts([
+    'title',
+    'slug',
+    'pageType'
+  ]).filter(p => p.pageType === 'skills')
 
-  return { props: { skills } }
+
+  return {
+    props: { posts },
+  }
+
 }

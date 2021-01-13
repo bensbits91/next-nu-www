@@ -12,6 +12,7 @@ export default function Index() {
       <div>
         <Link href='/work'><a>Work</a></Link>
       </div>
+      <div>GitHub, LinkedIn, nuTandem, email?, hire</div>
     </Layout>
   )
 }

@@ -3,9 +3,9 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import Nav from '../../components/Nav';
-import Post from '../../components/Post';
-import Related from '../../components/Related';
+import Nav from '../../components/Nav'
+import Post from '../../components/Post'
+import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
 
 // Custom components/renderers to pass to MDX.
@@ -21,7 +21,7 @@ const components = {
   Head,
 }
 
-export default function WorkPage({ post, mdxSource }) {
+export default function WorkPage({ post, mdxSource, skills }) {
   console.log('🚀 ~ WorkPage ~ post', post);
   console.log('🚀 ~ WorkPage ~ mdxSource', mdxSource);
 
@@ -41,7 +41,7 @@ export default function WorkPage({ post, mdxSource }) {
 
         <div>Skills</div>
 
-        <Related items={post.skills.split(',')} list='skills' />
+        <Related items={skills} list='skills' />
 
       </main>
 
@@ -63,9 +63,10 @@ export default function WorkPage({ post, mdxSource }) {
 
 export const getStaticProps = async ({ params }) => {
 
-  let post = getPostBySlug(params.slug, [
+  const post = getPostBySlug(params.slug, [
     'title',
     'slug',
+    'description',
     'content',
     'skills',
   ])
@@ -80,9 +81,18 @@ export const getStaticProps = async ({ params }) => {
     scope: post,
   })
 
+  const skills = post.skills.split(',').map(s => {
+    const skillSlug = s.trim()
+
+    return {
+      skillSlug: skillSlug,
+      skillPage: getPostBySlug(skillSlug, ['title'])
+    }
+  })
+
 
   return {
-    props: { post, mdxSource },
+    props: { post, mdxSource, skills },
   }
 
 }
