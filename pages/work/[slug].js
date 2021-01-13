@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import Nav from '../../components/Nav'
 import Post from '../../components/Post'
 import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
@@ -27,9 +26,6 @@ export default function WorkPage({ post, mdxSource, skills }) {
 
   return (
     <Layout>
-      <header>
-        <Nav />
-      </header>
       <div className='post-header'>
         <h1>{post.title}</h1>
         {post.description && (
@@ -39,7 +35,7 @@ export default function WorkPage({ post, mdxSource, skills }) {
       <main>
         <Post mdxSource={mdxSource} />
 
-        <div>Skills</div>
+        <h2>Skills</h2>
 
         <Related items={skills} list='skills' />
 

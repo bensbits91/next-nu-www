@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import Nav from '../../components/Nav'
 import Post from '../../components/Post'
 import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
@@ -24,9 +23,6 @@ const components = {
 export default function SkillPage({ post, mdxSource }) {
     return (
         <Layout>
-            <header>
-                <Nav />
-            </header>
             <div className="post-header">
                 <h1>{post.title}</h1>
                 {post.description && (

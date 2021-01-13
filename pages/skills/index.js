@@ -1,16 +1,14 @@
 import Layout from '../../components/Layout'
 import MdxList from '../../components/MdxList'
 import { getAllPosts } from '../../utils/api'
-import Nav from '../../components/Nav'
 
 export default function SkillIndex({ posts }) {
   return (
     <Layout>
-      <header>
-        <Nav />
-      </header>
-      <h1>Skills</h1>
-      <MdxList items={posts} />
+      <section>
+        <h1>Skills</h1>
+        <MdxList items={posts} />
+      </section>
     </Layout>
   )
 }
