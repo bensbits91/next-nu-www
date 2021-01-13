@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
-export default function Related({ items, list }) {
-    console.log('🚀 ~ Related ~ items', items);
+export default function Related({ items }) {
     return (
         <ul>
             {items.map(item => {
@@ -9,8 +8,8 @@ export default function Related({ items, list }) {
                     return (
                         <li key={item.skillSlug}>
                             <Link
-                                as={`/${list}/${item.skillSlug}`}
-                                href={`/${list}/[slug]`}
+                                as={`/${item.skillPage.pageType}/${item.skillSlug}`}
+                                href={`/${item.skillPage.pageType}/[slug]`}
                             >
                                 <a>{item.skillPage ? item.skillPage.title : item.skillSlug}</a>
                             </Link>
