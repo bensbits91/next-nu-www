@@ -1,30 +1,33 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import path from 'path'
 import Layout from '../../components/Layout'
-import { workFilePaths, WORK_PATH } from '../../utils/workPaths'
 import MdxList from '../../components/MdxList'
+import { getAllPosts } from '../../utils/api'
+import Nav from '../../components/Nav'
 
-export default function Index({ work }) {
+export default function WorkIndex({ posts }) {
+  console.log('🚀 ~ Index ~ posts', posts);
+
   return (
     <Layout>
+      <header>
+        <Nav />
+      </header>
       <h1>Work</h1>
-      <MdxList files={work} list='work' />
+      <MdxList items={posts} />
     </Layout>
   )
 }
 
 export function getStaticProps() {
-  const work = workFilePaths.map((filePath) => {
-    const source = fs.readFileSync(path.join(WORK_PATH, filePath))
-    const { content, data } = matter(source)
 
-    return {
-      content,
-      data,
-      filePath,
-    }
-  })
+  const posts = getAllPosts([
+    'title',
+    'slug',
+    'pageType'
+  ]).filter(p => p.pageType === 'work')
 
-  return { props: { work } }
+
+  return {
+    props: { posts },
+  }
+
 }

@@ -1,14 +1,12 @@
-import fs from 'fs'
-import matter from 'gray-matter'
-import hydrate from 'next-mdx-remote/hydrate'
 import renderToString from 'next-mdx-remote/render-to-string'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Link from 'next/link'
-import path from 'path'
 import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
-import { workFilePaths, WORK_PATH } from '../../utils/workPaths'
+import Nav from '../../components/Nav'
+import Post from '../../components/Post'
+import Related from '../../components/Related'
+import { getPostBySlug, getAllPosts } from '../../utils/api'
 
 // Custom components/renderers to pass to MDX.
 // Since the MDX files aren't loaded by webpack, they have no knowledge of how
@@ -23,24 +21,29 @@ const components = {
   Head,
 }
 
-export default function WorkPage({ source, frontMatter }) {
-  const content = hydrate(source, { components })
+export default function WorkPage({ post, mdxSource, skills }) {
+  console.log('🚀 ~ WorkPage ~ post', post);
+  console.log('🚀 ~ WorkPage ~ mdxSource', mdxSource);
+
   return (
     <Layout>
       <header>
-        <nav>
-          <Link href="/">
-            <a>👈 Go back home</a>
-          </Link>
-        </nav>
+        <Nav />
       </header>
-      <div className="post-header">
-        <h1>{frontMatter.title}</h1>
-        {frontMatter.description && (
-          <p className="description">{frontMatter.description}</p>
+      <div className='post-header'>
+        <h1>{post.title}</h1>
+        {post.description && (
+          <p className='description'>{post.description}</p>
         )}
       </div>
-      <main>{content}</main>
+      <main>
+        <Post mdxSource={mdxSource} />
+
+        <div>Skills</div>
+
+        <Related items={skills} list='skills' />
+
+      </main>
 
       <style jsx>{`
         .post-header h1 {
@@ -59,38 +62,50 @@ export default function WorkPage({ source, frontMatter }) {
 }
 
 export const getStaticProps = async ({ params }) => {
-  const workFilePaths = path.join(WORK_PATH, `${params.slug}.mdx`)
-  const source = fs.readFileSync(workFilePaths)
 
-  const { content, data } = matter(source)
+  const post = getPostBySlug(params.slug, [
+    'title',
+    'slug',
+    'description',
+    'content',
+    'skills',
+  ])
 
-  const mdxSource = await renderToString(content, {
+  const mdxSource = await renderToString(post.content, {
     components,
     // Optionally pass remark/rehype plugins
     mdxOptions: {
       remarkPlugins: [],
       rehypePlugins: [],
     },
-    scope: data,
+    scope: post,
   })
 
+  const skills = post.skills.split(',').map(s => {
+    const skillSlug = s.trim()
+
+    return {
+      skillSlug: skillSlug,
+      skillPage: getPostBySlug(skillSlug, ['title'])
+    }
+  })
+
+
   return {
-    props: {
-      source: mdxSource,
-      frontMatter: data,
-    },
+    props: { post, mdxSource, skills },
   }
+
 }
 
 export const getStaticPaths = async () => {
-  const paths = workFilePaths
-    // Remove file extensions for page paths
-    .map((path) => path.replace(/\.mdx?$/, ''))
-    // Map the path into the static paths object required by Next.js
-    .map((slug) => ({ params: { slug } }))
+  const posts = getAllPosts(['slug'])
 
   return {
-    paths,
+    paths: posts.map((post) => {
+      return {
+        params: { ...post },
+      }
+    }),
     fallback: false,
   }
 }
