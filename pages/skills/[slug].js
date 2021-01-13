@@ -1,54 +1,39 @@
 import renderToString from 'next-mdx-remote/render-to-string'
-import dynamic from 'next/dynamic'
+import Link from 'next/link'
 import Head from 'next/head'
-import CustomLink from '../../components/CustomLink'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import Related from '../../components/Related'
+// import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
 
-// Custom components/renderers to pass to MDX.
-// Since the MDX files aren't loaded by webpack, they have no knowledge of how
-// to handle import statements. Instead, you must include components in scope
-// here.
-const components = {
-    a: CustomLink,
-    // It also works with dynamically-imported components, which is especially
-    // useful for conditionally loading components for certain routes.
-    // See the notes in README.md for more details.
-    TestComponent: dynamic(() => import('../../components/TestComponent')),
-    Head,
-}
+// const components = {
+//     Head,
+// }
 
 export default function SkillPage({ post, mdxSource }) {
     return (
-        <Layout>
-            <div className="post-header">
-                <h1>{post.title}</h1>
-                {post.description && (
-                    <p className='description'>{post.description}</p>
-                )}
-            </div>
-            <main>
-                <Post mdxSource={mdxSource} />
-                <div>
-                    <CustomLink href={post.link}>Learn more about {post.title}</CustomLink>
+        <>
+            <Head>
+                <title>Ben Brooks - Skills - {post.title}</title>
+                <meta name='author' content='Ben Brooks'/>
+            </Head>
+            <Layout>
+                <div className="post-header">
+                    <h1>{post.title}</h1>
+                    {post.description && (
+                        <p className='description'>{post.description}</p>
+                    )}
                 </div>
-            </main>
-
-            <style jsx>{`
-        .post-header h1 {
-          margin-bottom: 0;
-        }
-
-        .post-header {
-          margin-bottom: 2rem;
-        }
-        .description {
-          opacity: 0.6;
-        }
-      `}</style>
-        </Layout>
+                <main>
+                    <Post mdxSource={mdxSource} />
+                    <div>
+                        <Link href={post.link}>
+                            <a>Learn more about {post.title}</a>
+                        </Link>
+                    </div>
+                </main>
+            </Layout>
+        </>
     )
 }
 
@@ -62,29 +47,18 @@ export const getStaticProps = async ({ params }) => {
     ])
 
     const mdxSource = await renderToString(post.content, {
-        components,
+        // components,
         // Optionally pass remark/rehype plugins
-        mdxOptions: {
-            remarkPlugins: [],
-            rehypePlugins: [],
-        },
+        // mdxOptions: {
+        //     remarkPlugins: [],
+        //     rehypePlugins: [],
+        // },
         scope: post,
     })
 
-    // const skills = post.skills.split(',').map(s => {
-    //   const skillSlug = s.trim()
-
-    //   return {
-    //     skillSlug: skillSlug,
-    //     skillPage: getPostBySlug(skillSlug, ['title'])
-    //   }
-    // })
-
-
     return {
-        props: { post, mdxSource/* , skills */ },
+        props: { post, mdxSource },
     }
-
 }
 
 export const getStaticPaths = async () => {
