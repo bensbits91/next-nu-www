@@ -11,14 +11,12 @@ export function getPostSlugs() {
 export function getPostBySlug(slug, fields = []) {
     const realSlug = slug.replace(/\.mdx$/, '')
     const fullPath = join(postsDirectory, `${realSlug}.mdx`)
-    // if (!fullPath) return null
     try {
         const fileContents = fs.readFileSync(fullPath, 'utf8')
 
 
         const { data, content } = matter(fileContents)
         const items = {}
-        // Ensure only the minimal needed data is exposed
         fields.forEach((field) => {
             if (field === 'slug') {
                 items[field] = realSlug
