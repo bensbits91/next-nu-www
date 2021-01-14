@@ -1,10 +1,9 @@
 import Link from 'next/link'
 
 export default function MdxList({ items }) {
-    console.log('🚀 ~ MdxList ~ items', items);
     return (
         <ul>
-            {items.map((item) => (
+            {items.map(item => (
                 <li key={item.slug}>
                     <Link
                         as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
