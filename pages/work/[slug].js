@@ -45,7 +45,7 @@ export const getStaticProps = async ({ params }) => {
 
             return {
                 skillSlug: skillSlug,
-                skillPage: getPostBySlug(skillSlug, ['title'])
+                skillPage: getPostBySlug(skillSlug, ['title', 'pageType'])
             }
         })
 
@@ -55,7 +55,8 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-    const posts = getAllPosts(['slug'])
+    const posts = getAllPosts(['slug', 'pageType'])
+        .filter(p => p.pageType === 'work')
 
     return {
         paths: posts.map(post => {

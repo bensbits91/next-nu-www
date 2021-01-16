@@ -1,6 +1,9 @@
 # Ben's Next.js MDX Portfolio
 
-This is a work in progress. I'll update this description soon...
+Strikes a balance between 
+- Simple content authoring
+- Lightweight, flexible stack
+- Facilitates frequent changes and maintenance
 
 ## Key Features
 
@@ -14,4 +17,6 @@ This is a work in progress. I'll update this description soon...
 
 ## Live Demo
 
-Coming soon...
+[Tests are uto-deployed to Vercel](https://vercel.com/bensbits91/next-mdx-portfolio)
+
+Live demo coming soon...

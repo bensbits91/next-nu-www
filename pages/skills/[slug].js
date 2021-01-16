@@ -26,7 +26,8 @@ export default function SkillPage({ post, mdxSource }) {
                             <Link href={post.link}>
                                 <a>Learn more about {post.title}</a>
                             </Link>
-                        </div>}
+                        </div>
+                    }
                 </main>
             </Layout>
         </>
@@ -50,7 +51,8 @@ export const getStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-    const posts = getAllPosts(['slug'])
+    const posts = getAllPosts(['slug', 'pageType'])
+        .filter(p => p.pageType === 'skills')
 
     return {
         paths: posts.map(post => {
