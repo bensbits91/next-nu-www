@@ -22,25 +22,43 @@ export default function MdxList({ items }) {
                 )}
             </ul> : <></>,
 
-        aList = (items, idx) =>
-            <ul key={idx}>
-                {items.map(item =>
-                    <li key={item.slug}>
-                        <Link
-                            as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
-                            href={`/${item.pageType}/[slug]`}
-                        >
-                            <a>{item.title}</a>
-                        </Link>
-                    </li>
-                )}
-            </ul>
+        aList = (items, idx) =>{
+        console.log('🚀 ~ MdxList ~ items', items);
+
+            return(
+            <div>
+                <ul key={idx}>
+                    {items.map(item =>
+                        <li key={item.slug}
+                            className='asdf'>
+                            <Link
+                                as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
+                                href={`/${item.pageType}/[slug]`}
+                            >
+                                <a>
+                                    <i className={item.icon || 'fas fa-chevron-right'}></i>
+                                    {item.title}
+                                </a>
+                            </Link>
+                        </li>
+                    )}
+                </ul>
+
+                <style jsx>{`
+                    li {
+                        list-style: none;
+                        padding: 0;
+                    }
+                    i {
+                        padding-right: 20px;
+                    }
+                `}</style>
+            </div>)}
 
     return (
         <div className='row'>
             <div className='col-8 col-12-medium'>
                 <div className='row mdxList'>
-                <i class="fab fa-js"></i>
                     {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
 
                         const filteredItems = function () {
@@ -98,7 +116,7 @@ export default function MdxList({ items }) {
             </div>
 
             <style jsx>{`
-                .row.mdxList .col-6 {
+                .mdxList .col-6 {
                     border-top: 1px solid;
                     padding-top: 40px;
                 }
