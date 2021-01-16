@@ -2,6 +2,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { groups } from '../static/categories'
 import dayjs from 'dayjs'
+import ItemIcon from './ItemIcon'
+
 
 export default function MdxList({ items }) {
     const groupsForPage = groups[items[0].pageType],
@@ -22,38 +24,39 @@ export default function MdxList({ items }) {
                 )}
             </ul> : <></>,
 
-        aList = (items, idx) =>{
-        console.log('🚀 ~ MdxList ~ items', items);
+        aList = (items, idx) => {
+            return (
+                <div key={idx}>
+                    <ul>
+                        {items.map(item =>
+                            <li key={item.slug}
+                                className='asdf'>
+                                <Link
+                                    as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
+                                    href={`/${item.pageType}/[slug]`}
+                                >
+                                    <a>
+                                        <span className='iconWrap'>
+                                            <ItemIcon slug={item.slug} />
+                                        </span>
+                                        {item.title}
+                                    </a>
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
 
-            return(
-            <div>
-                <ul key={idx}>
-                    {items.map(item =>
-                        <li key={item.slug}
-                            className='asdf'>
-                            <Link
-                                as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
-                                href={`/${item.pageType}/[slug]`}
-                            >
-                                <a>
-                                    <i className={item.icon || 'fas fa-chevron-right'}></i>
-                                    {item.title}
-                                </a>
-                            </Link>
-                        </li>
-                    )}
-                </ul>
-
-                <style jsx>{`
+                    <style jsx>{`
                     li {
                         list-style: none;
                         padding: 0;
                     }
-                    i {
+                    .iconWrap {
                         padding-right: 20px;
                     }
                 `}</style>
-            </div>)}
+                </div>)
+        }
 
     return (
         <div className='row'>
