@@ -1,7 +1,14 @@
+import dayjs from 'dayjs'
+
+const yearsSince2004 = []
+let i = dayjs().year()
+
+for (i; i >= 2004; i--) yearsSince2004.push(i)
+
 export const groups = {
     skills: {
         skillType: {
-            optionText: 'Skill type',
+            optionText: 'Type of skill',
             groups: [
                 {
                     groupName: 'Language',
@@ -18,6 +25,31 @@ export const groups = {
                 {
                     groupName: 'Database',
                     match: ['Database'],
+                },
+            ]
+        },
+        level: {
+            optionText: 'Level of expertise',
+            groups: [
+                {
+                    groupName: 'Expert',
+                    match: [8, 9, 10],
+                },
+                {
+                    groupName: 'Strong',
+                    match: [6, 7],
+                },
+                {
+                    groupName: 'Intermediate',
+                    match: [4, 5],
+                },
+                {
+                    groupName: 'Basic',
+                    match: [2, 3],
+                },
+                {
+                    groupName: 'Learning now',
+                    match: [0, 1],
                 },
             ]
         },
@@ -49,6 +81,15 @@ export const groups = {
                     match: [0],
                 },
             ]
-        }
+        },
+        lastUsed: {
+            optionText: 'Last used',
+            groups: yearsSince2004.map(y => (
+                {
+                    groupName: y === 2021 ? 'Using now' : y,
+                    match: y
+                }
+            ))
+        },
     }
 }
