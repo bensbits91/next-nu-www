@@ -53,40 +53,44 @@ export default function MdxList({ items }) {
 
             {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
                 console.log('🚀 ~ {g', g);
+
+                const filteredItems = grouping === 'skillType' ? items.filter(i => g.match.indexOf(i.skillType) > -1)
+                : grouping === 'level' ? items.filter(i => g.match.indexOf(i.level) > -1)
+                : grouping === 'years' ? items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1)
+                : grouping === 'lastUsed' ? items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year())
+                : null
+                console.log('🚀 ~ {filteredItems', filteredItems);
+
                 return (
+                    filteredItems.length>0 &&
                     <>
                         <h2 key={typeof g === 'string' ? g.groupName.replace(/ /g, '') : g}>{g.groupName}</h2>
 
                         {grouping === 'skillType' &&
-                            aList(items.filter(i => i.skillType === g.groupName),
+                            aList(items.filter(i => g.match.indexOf(i.skillType) > -1),
                                 idx.toString()
                             )
                         }
 
                         {grouping === 'level' &&
-                            aList(items.filter(i =>
-                                g.match.indexOf(i.level) > -1
-                            ),
+                            aList(items.filter(i => g.match.indexOf(i.level) > -1),
                                 idx.toString()
                             )
                         }
 
                         {grouping === 'years' &&
-                            aList(items.filter(i =>
-                                g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1
-                            ),
+                            aList(items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1),
                                 idx.toString()
                             )
                         }
 
                         {grouping === 'lastUsed' &&
-                            aList(items.filter(i =>
-                                (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year()
-                            ),
+                            aList(items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year()),
                                 idx.toString()
                             )
                         }
                     </>
+
                 )
             })}
 

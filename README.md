@@ -17,4 +17,6 @@ Strikes a balance between
 
 ## Live Demo
 
-[Auto-deployed to Vercel](https://next-mdx-portfolio-dxd7u7c3c.vercel.app/)
+[Tests are uto-deployed to Vercel](https://vercel.com/bensbits91/next-mdx-portfolio)
+
+Live demo coming soon...

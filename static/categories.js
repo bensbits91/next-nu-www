@@ -11,20 +11,50 @@ export const groups = {
             optionText: 'Type of skill',
             groups: [
                 {
-                    groupName: 'Language',
-                    match: ['Language'],
+                    groupName: 'Languages',
+                    match: ['Language',
+                        'Query Language'],
                 },
                 {
-                    groupName: 'Library',
+                    groupName: 'Libraries',
                     match: ['Library'],
                 },
                 {
-                    groupName: 'Framework',
+                    groupName: 'Frameworks',
                     match: ['Framework'],
                 },
                 {
-                    groupName: 'Database',
+                    groupName: 'Databases',
                     match: ['Database'],
+                },
+                {
+                    groupName: 'Build Tools',
+                    match: ['Compiler',
+                        'Build Toolkit',
+                        'Package Manager',
+                        'Rendering Method',
+                        'Bundler'],
+                },
+                {
+                    groupName: 'Content Management',
+                    match: ['CMS'],
+                },
+                {
+                    groupName: 'Style',
+                    match: ['Style'],
+                },
+                {
+                    groupName: 'Code & Collaboration',
+                    match: ['Version Control System',
+                        'Source Code Management'],
+                },
+                {
+                    groupName: 'Runtime Environments',
+                    match: ['Runtime Environment'],
+                },
+                {
+                    groupName: 'APIs',
+                    match: ['API'],
                 },
             ]
         },
