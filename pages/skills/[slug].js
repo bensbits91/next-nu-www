@@ -5,6 +5,7 @@ import Layout from '../../components/Layout'
 import Post from '../../components/Post'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
 import ItemIcon from '../../components/ItemIcon'
+import { colors } from '../../styles/js/vars'
 
 export default function SkillPage({ post, mdxSource }) {
     return (
@@ -25,7 +26,7 @@ export default function SkillPage({ post, mdxSource }) {
                         </div>
 
                         <div className='col-3 col-12-medium'>
-                            <ItemIcon slug={post.slug} size='12em' />
+                            <ItemIcon slug={post.slug} size='12em' color={colors.mainPop} />
                         </div>
 
                     </div>

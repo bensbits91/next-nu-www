@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { groups } from '../static/categories'
 import dayjs from 'dayjs'
 import ItemIcon from './ItemIcon'
+import { colors } from '../styles/js/vars'
 
 export default function MdxList({ items }) {
     const groupsForPage = groups[items[0].pageType],
