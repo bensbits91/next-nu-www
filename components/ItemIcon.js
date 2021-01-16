@@ -4,7 +4,6 @@ import {
     DiGitBranch,
     DiGulp,
     DiNpm,
-    DiSass,
     DiSqllite
 } from 'react-icons/di'
 import {
@@ -23,84 +22,85 @@ import {
     SiNextDotJs,
     SiPostgresql,
     SiReact,
+    SiSass,
     SiTypescript,
     SiWebpack,
     SiWordpress,
     SiYarn
 } from 'react-icons/si'
 
-export default function ItemIcon({ slug }) {
+export default function ItemIcon({ slug, size='1em' }) {
     switch (slug) {
         case 'babel':
-            return <SiBabel />
+            return <SiBabel size={size} />
 
         case 'css':
-            return <FaCss3 />
+            return <FaCss3 size={size} />
 
         case 'git':
-            return <DiGitBranch />
+            return <DiGitBranch size={size} />
 
         case 'github':
-            return <SiGithub />
+            return <SiGithub size={size} />
 
         case 'graphql':
-            return <SiGraphql />
+            return <SiGraphql size={size} />
 
         case 'gulp':
-            return <DiGulp />
+            return <DiGulp size={size} />
 
         case 'jquery':
-            return <SiJquery />
+            return <SiJquery size={size} />
 
         case 'javascript':
-            return <SiJavascript />
+            return <SiJavascript size={size} />
 
         case 'next':
-            return <SiNextDotJs />
+            return <SiNextDotJs size={size} />
 
         case 'node':
-            return <FaNodeJs />
+            return <FaNodeJs size={size} />
 
         case 'npm':
-            return <DiNpm />
+            return <DiNpm size={size} />
 
         case 'php':
-            return <FaPhp />
+            return <FaPhp size={size} />
 
         case 'postgresql':
-            return <SiPostgresql />
+            return <SiPostgresql size={size} />
 
         case 'react':
-            return <SiReact />
+            return <SiReact size={size} />
 
         case 'rest':
-            return <AiOutlineApi />
+            return <AiOutlineApi size={size} />
 
         case 'sass':
-            return <DiSass />
+            return <SiSass size={size} />
 
         case 'spfx':
-            return <SiMicrosoftsharepoint />
+            return <SiMicrosoftsharepoint size={size} />
 
         case 'sql':
-            return <DiDatabase />
+            return <DiDatabase size={size} />
 
         case 'sqlite':
-            return <DiSqllite />
+            return <DiSqllite size={size} />
 
         case 'typescript':
-            return <SiTypescript />
+            return <SiTypescript size={size} />
 
         case 'webpack':
-            return <SiWebpack />
+            return <SiWebpack size={size} />
 
         case 'wordpress':
-            return <SiWordpress />
+            return <SiWordpress size={size} />
 
         case 'yarn':
-            return <SiYarn />
+            return <SiYarn size={size} />
 
         default:
-            return <FaChevronRight />
+            return <FaChevronRight size={size} />
     }
 }
