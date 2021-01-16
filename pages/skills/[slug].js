@@ -26,7 +26,8 @@ export default function SkillPage({ post, mdxSource }) {
                             <Link href={post.link}>
                                 <a>Learn more about {post.title}</a>
                             </Link>
-                        </div>}
+                        </div>
+                    }
                 </main>
             </Layout>
         </>

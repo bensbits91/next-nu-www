@@ -8,7 +8,7 @@ export default function SkillIndex({ posts }) {
         <>
             <Head>
                 <title>Ben Brooks - Skills</title>
-                <meta name='author' content='Ben Brooks'/>
+                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <section>
@@ -24,7 +24,10 @@ export function getStaticProps() {
     const posts = getAllPosts([
         'title',
         'slug',
-        'pageType'
+        'pageType',
+        'skillType',
+        'love',
+        'firstUsed',
     ]).filter(p => p.pageType === 'skills')
 
     return {
