@@ -1,7 +1,6 @@
 import Link from 'next/link'
 
 export default function Related({ items }) {
-    console.log('🚀 ~ Related ~ items', items);
     return (
         <ul>
             {items.map(item => {

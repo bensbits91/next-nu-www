@@ -2491,8 +2491,8 @@ input, select, textarea {
 
 
 	.button.active.disabled {
-		color: #aaa !important;
-		box-shadow: inset 0 0 0 2px #aaa;
+		color: var(--main-yellow) !important;
+		box-shadow: inset 0 0 0 2px var(--main-yellow);
 		opacity: 1;
 	}
 
@@ -2939,6 +2939,10 @@ input, select, textarea {
 						/* font-weight: 900; */
 						letter-spacing: 0.25em;
 						/* text-transform: uppercase; */
+					}
+
+					#header nav ul li a.active {
+						color: var(--main-yellow);
 					}
 
 					#header nav ul li a[href="#menu"] {
