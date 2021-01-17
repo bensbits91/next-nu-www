@@ -26,7 +26,7 @@ export default function SkillPage({ post, mdxSource }) {
                         </div>
 
                         <div className='col-3 col-12-medium'>
-                            <ItemIcon slug={post.slug} size='12em' color={colors.mainPop} />
+                            <ItemIcon slug={post.slug} size='12em' color={colors.mainPink} />
                         </div>
 
                     </div>

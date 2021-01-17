@@ -3,7 +3,6 @@ import Link from 'next/link'
 import { groups } from '../static/categories'
 import dayjs from 'dayjs'
 import ItemIcon from './ItemIcon'
-import { colors } from '../styles/js/vars'
 
 export default function MdxList({ items }) {
     const groupsForPage = groups[items[0].pageType],
@@ -47,14 +46,14 @@ export default function MdxList({ items }) {
                     </ul>
 
                     <style jsx>{`
-                    li {
-                        list-style: none;
-                        padding: 0;
-                    }
-                    .iconWrap {
-                        padding-right: 20px;
-                    }
-                `}</style>
+                        li {
+                            list-style: none;
+                            padding: 0;
+                        }
+                        .iconWrap {
+                            padding-right: 20px;
+                        }
+                    `}</style>
                 </div>)
         }
 

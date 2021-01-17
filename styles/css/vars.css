@@ -1,12 +1,9 @@
 :root {
     --main-bg: #111;
-    --main-link: #8bffff;
-    --main-pop: #ff5d9e;
-
-    /* --main-bg: #111;
-    --main-link: #23C0AD;
-    --main-pop: #F1E821; */
-
-    /* --main-link: #4AD7D1;
-    --main-pop: #FE4A49; */
+    --main-mint: #00feca;
+    /* --main-pink: #f2849e; */
+    --main-pink: #ca0098;
+    --main-purple: #ca00fe;
+    --main-red: #ca1010;
+    --main-yellow: #feca00;
 }
