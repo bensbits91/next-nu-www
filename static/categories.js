@@ -44,12 +44,12 @@ export const groups = {
                     match: ['Style'],
                 },
                 {
-                    groupName: 'Code & Collaboration',
+                    groupName: 'Code Management',
                     match: ['Version Control System',
                         'Source Code Management'],
                 },
                 {
-                    groupName: 'Runtime Environments',
+                    groupName: 'Runtime',
                     match: ['Runtime Environment'],
                 },
                 {
@@ -116,7 +116,7 @@ export const groups = {
             optionText: 'Last used',
             groups: yearsSince2004.map(y => (
                 {
-                    groupName: y === 2021 ? 'Using now' : y,
+                    groupName: y === 2021 ? 'Using now' : 'Last used in ' + y,
                     match: y
                 }
             ))

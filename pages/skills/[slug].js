@@ -4,6 +4,8 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
+import ItemIcon from '../../components/ItemIcon'
+import { colors } from '../../styles/js/vars'
 
 export default function SkillPage({ post, mdxSource }) {
     return (
@@ -13,11 +15,21 @@ export default function SkillPage({ post, mdxSource }) {
                 <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
-                <div className="post-header">
-                    <h1>{post.title}</h1>
-                    {post.description && (
-                        <p className='description'>{post.description}</p>
-                    )}
+                <div className='post-header'>
+                    <div className='row'>
+
+                        <div className='col-9 col-12-medium'>
+                            <h1>{post.title}</h1>
+                            {post.description && (
+                                <p className='description'>{post.description}</p>
+                            )}
+                        </div>
+
+                        <div className='col-3 col-12-medium'>
+                            <ItemIcon slug={post.slug} size='12em' color={colors.mainPink} />
+                        </div>
+
+                    </div>
                 </div>
                 <main>
                     <Post mdxSource={mdxSource} />

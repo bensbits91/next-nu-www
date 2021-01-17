@@ -2,99 +2,130 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { groups } from '../static/categories'
 import dayjs from 'dayjs'
-
+import ItemIcon from './ItemIcon'
 
 export default function MdxList({ items }) {
-    console.log('🚀 ~ MdxList ~ items', items);
+    const groupsForPage = groups[items[0].pageType],
 
+        [grouping, setGrouping] = useState('skillType'),
 
+        groupSelect = groupsForPage ?
+            <ul className='actions stacked'>
+                {Object.keys(groupsForPage).map(g =>
+                    <li key={g}>
+                        <a
+                            onClick={() => setGrouping(g)}
+                            className={g === grouping ? 'button small active disabled' : 'button small'}
+                        >
+                            {groupsForPage[g].optionText}
+                        </a>
+                    </li>
+                )}
+            </ul> : <></>,
 
+        aList = (items, idx) => {
+            return (
+                <div key={idx}>
+                    <ul>
+                        {items.map(item =>
+                            <li key={item.slug}
+                                className='asdf'>
+                                <Link
+                                    as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
+                                    href={`/${item.pageType}/[slug]`}
+                                >
+                                    <a>
+                                        <span className='iconWrap'>
+                                            <ItemIcon slug={item.slug} />
+                                        </span>
+                                        {item.title}
+                                    </a>
+                                </Link>
+                            </li>
+                        )}
+                    </ul>
 
-    const groupsForPage = groups[items[0].pageType]
-    // console.log('🚀 ~ MdxList ~ groupsForPage', groupsForPage);
-
-
-
-
-    const [grouping, setGrouping] = useState('skillType')
-
-
-    const groupSelect = groupsForPage ?
-        <ul className='actions stacked'>
-            {Object.keys(groupsForPage).map(g =>
-                <li key={g}>
-                    <a
-                        onClick={() => setGrouping(g)}
-                        className={g === grouping ? 'button small active disabled' : 'button small'}
-                    >
-                        {groupsForPage[g].optionText}
-                    </a>
-                </li>
-            )}
-        </ul> : <></>
-
-    const aList = (items, idx) =>
-        <ul key={idx}>
-            {items.map(item =>
-                <li key={item.slug}>
-                    <Link
-                        as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
-                        href={`/${item.pageType}/[slug]`}
-                    >
-                        <a>{item.title}</a>
-                    </Link>
-                </li>
-            )}
-        </ul>
+                    <style jsx>{`
+                        li {
+                            list-style: none;
+                            padding: 0;
+                        }
+                        .iconWrap {
+                            padding-right: 20px;
+                        }
+                    `}</style>
+                </div>)
+        }
 
     return (
-        <>
-            {groupSelect}
+        <div className='row'>
+            <div className='col-8 col-12-medium'>
+                <div className='row mdxList'>
+                    {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
 
-            {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
-                console.log('🚀 ~ {g', g);
+                        const filteredItems = function () {
+                            switch (grouping) {
+                                case 'skillType':
+                                    return items.filter(i => g.match.indexOf(i.skillType) > -1)
 
-                const filteredItems = grouping === 'skillType' ? items.filter(i => g.match.indexOf(i.skillType) > -1)
-                : grouping === 'level' ? items.filter(i => g.match.indexOf(i.level) > -1)
-                : grouping === 'years' ? items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1)
-                : grouping === 'lastUsed' ? items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year())
-                : null
-                console.log('🚀 ~ {filteredItems', filteredItems);
+                                case 'level':
+                                    return items.filter(i => g.match.indexOf(i.level) > -1)
 
-                return (
-                    filteredItems.length>0 &&
-                    <>
-                        <h2 key={typeof g === 'string' ? g.groupName.replace(/ /g, '') : g}>{g.groupName}</h2>
+                                case 'years':
+                                    return items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1)
 
-                        {grouping === 'skillType' &&
-                            aList(items.filter(i => g.match.indexOf(i.skillType) > -1),
-                                idx.toString()
-                            )
-                        }
+                                case 'lastUsed':
+                                    return items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year())
 
-                        {grouping === 'level' &&
-                            aList(items.filter(i => g.match.indexOf(i.level) > -1),
-                                idx.toString()
-                            )
-                        }
+                                default:
+                                    return null
+                            }
+                        }()
 
-                        {grouping === 'years' &&
-                            aList(items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1),
-                                idx.toString()
-                            )
-                        }
+                        return (
+                            filteredItems.length > 0 &&
+                            <div className='col-6 col-12-medium'>
+                                <h2 key={typeof g === 'string' ? g.groupName.replace(/ /g, '') : g}>
+                                    {g.groupName}
+                                </h2>
 
-                        {grouping === 'lastUsed' &&
-                            aList(items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year()),
-                                idx.toString()
-                            )
-                        }
-                    </>
+                                {grouping === 'skillType' &&
+                                    aList(filteredItems, idx.toString())
+                                }
 
-                )
-            })}
+                                {grouping === 'level' &&
+                                    aList(filteredItems, idx.toString())
+                                }
 
-            {!groupsForPage && aList(items, '1')}
-        </>
+                                {grouping === 'years' &&
+                                    aList(filteredItems, idx.toString())
+                                }
+
+                                {grouping === 'lastUsed' &&
+                                    aList(filteredItems, idx.toString())
+                                }
+                            </div>
+
+                        )
+                    })}
+                </div>
+
+                {!groupsForPage && aList(items, '1')}
+            </div>
+
+            <div className='col-4 col-12-medium sidebar'>
+                {groupSelect}
+            </div>
+
+            <style jsx>{`
+                .mdxList .col-6 {
+                    border-top: 1px solid;
+                    padding-top: 40px;
+                }
+                .sidebar {
+                    text-align: right;
+                }
+            `}</style>
+        </div>
     )
 }

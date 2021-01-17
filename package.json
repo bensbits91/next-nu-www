@@ -15,7 +15,8 @@
     "next-mdx-remote": "^1.0.0",
     "next-remote-watch": "0.2.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-icons": "^4.1.0"
   },
   "license": "MIT"
 }
