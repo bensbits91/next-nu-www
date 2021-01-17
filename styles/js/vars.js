@@ -1,6 +1,6 @@
 export const colors = {
-    mainBg: '#111',
-    mainBgDarker: '#0d0e0f',
+    mainBg: '#131516',
+    mainBgDarker: '#0f1011',
     mainMint: '#00feca',
     // mainPink: '#f2849e',
     mainPink: '#ca0098',
