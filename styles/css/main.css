@@ -24,11 +24,13 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+}
 
 body {
 	line-height: 1;
@@ -2882,18 +2884,30 @@ input, select, textarea {
 					height: 2em;
 				}
 
-		#header nav {
+		/* #header nav {
 			position: fixed;
 			right: 2em;
 			top: 2em;
 			z-index: 10000;
+		} */
+
+		#header nav {
+			background: var(--main-bg-darker);
+			padding: 20px;
+			position: fixed;
+			right: 0;
+			top: 0;
+			text-align: right;
+			width: 100%;
+			z-index: 10000;
 		}
 
 			#header nav ul {
-				display: -moz-flex;
+				/* display: -moz-flex;
 				display: -webkit-flex;
 				display: -ms-flex;
-				display: flex;
+				display: flex; */
+				display: inline-block;
 				-moz-align-items: center;
 				-webkit-align-items: center;
 				-ms-align-items: center;
@@ -2901,26 +2915,30 @@ input, select, textarea {
 				list-style: none;
 				margin: 0;
 				padding: 0;
+				text-align: right;
+				width: auto;
 			}
 
 				#header nav ul li {
-					display: block;
+					display: inline-block;
+					/* display: block; */
 					padding: 0;
 				}
 
 					#header nav ul li a {
 						display: block;
-						position: relative;
+						/* position: relative; */
 						height: 3em;
 						line-height: 3em;
 						padding: 0 1.5em;
-						background-color: rgba(255, 255, 255, 0.5);
-						border-radius: 4px;
+						/* background-color: rgba(255, 255, 255, 0.5); */
+						/* border-radius: 4px; */
 						border: 0;
-						font-size: 0.8em;
-						font-weight: 900;
-						letter-spacing: 0.35em;
-						text-transform: uppercase;
+						font-size: 0.9em;
+						/* font-size: 0.8em; */
+						/* font-weight: 900; */
+						letter-spacing: 0.25em;
+						/* text-transform: uppercase; */
 					}
 
 					#header nav ul li a[href="#menu"] {
