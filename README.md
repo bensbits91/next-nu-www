@@ -12,8 +12,9 @@ Strikes a balance between
 - Custom API for retrieving markdown files
 - Markdown parsed to HTML
 - Metadata (frontmatter) stored in markdown files
+- Auto-generated responsive images (srcsets and sizes)
 - Custom React components
-- Built with Node.js
+- Built with Node.js, Babel and Webpack
 
 ## Live Demo
 

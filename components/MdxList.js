@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
-import { groups } from '../static/categories'
+import { groups } from '../utils/categories'
 import dayjs from 'dayjs'
 import ItemIcon from './ItemIcon'
 
@@ -84,8 +84,8 @@ export default function MdxList({ items }) {
 
                         return (
                             filteredItems.length > 0 &&
-                            <div className='col-6 col-12-medium'>
-                                <h2 key={typeof g === 'string' ? g.groupName.replace(/ /g, '') : g}>
+                            <div key={idx} className='col-6 col-12-medium'>
+                                <h2>
                                     {g.groupName}
                                 </h2>
 

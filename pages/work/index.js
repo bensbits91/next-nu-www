@@ -8,7 +8,6 @@ export default function WorkIndex({ posts }) {
         <>
             <Head>
                 <title>Ben Brooks - Work</title>
-                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <h1>Work</h1>
