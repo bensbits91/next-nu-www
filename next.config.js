@@ -5,4 +5,7 @@ module.exports = withOptimizedImages({
         config.resolve.alias.images = path.join(__dirname, "public/images");
         return config;
     },
+    responsive: {
+        adapter: require('responsive-loader/sharp')
+    }
 });
