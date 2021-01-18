@@ -6,13 +6,13 @@ export default function ImageOpt({ path, sizeSet = 'full' }) {
             &sizes[]=1000
         `),
 
-    mid: require(`images/${path}?resize
+        mid: require(`images/${path}?resize
             &sizes[]=200
             &sizes[]=400
             &sizes[]=750
         `),
 
-    small: require(`images/${path}?resize
+        small: require(`images/${path}?resize
             &sizes[]=100
             &sizes[]=200
             &sizes[]=375
@@ -25,11 +25,6 @@ export default function ImageOpt({ path, sizeSet = 'full' }) {
                 srcSet={sizes[sizeSet].srcSet}
                 src={sizes[sizeSet].src}
             />
-            <style jsx>{`
-                .image-container img {
-                    width: 100%;
-                }
-            `}</style>
         </div>
     );
 }

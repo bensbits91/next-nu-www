@@ -2384,6 +2384,9 @@ input, select, textarea {
 
 /* Image Sizes */
 
+.image-container img {
+	width: 100%;
+}
 .img-wrap-small {
 	width: 30%;
 }
