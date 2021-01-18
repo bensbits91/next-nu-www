@@ -4,13 +4,13 @@ import Layout from '../../components/Layout'
 import Post from '../../components/Post'
 import Related from '../../components/Related'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
+import ImageOpt from '../../components/ImageOpt'
 
 export default function WorkPage({ post, mdxSource, skills }) {
     return (
         <>
             <Head>
                 <title>Ben Brooks - Work - {post.title}</title>
-                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <div className='post-header'>
@@ -23,6 +23,17 @@ export default function WorkPage({ post, mdxSource, skills }) {
                     <Post mdxSource={mdxSource} />
                     <h2>Skills</h2>
                     <Related items={skills} />
+                    {post.image &&
+                        <><div className='img-wrap-small'>
+                            <ImageOpt path={post.image} sizeSet='small' />
+                        </div>
+                        <div className='img-wrap-mid'>
+                            <ImageOpt path={post.image} sizeSet='mid' />
+                        </div>
+                        <div className='img-wrap-full'>
+                            <ImageOpt path={post.image} sizeSet='full' />
+                        </div></>
+                    }
                 </main>
             </Layout>
         </>
@@ -36,6 +47,7 @@ export const getStaticProps = async ({ params }) => {
         'description',
         'content',
         'skills',
+        'image'
     ]),
 
         mdxSource = await renderToString(post.content, { scope: post }),

@@ -8,7 +8,6 @@ export default function SkillIndex({ posts }) {
         <>
             <Head>
                 <title>Ben Brooks - Skills</title>
-                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <section>

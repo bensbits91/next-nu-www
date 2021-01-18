@@ -7,7 +7,6 @@ export default function Index() {
         <>
             <Head>
                 <title>Ben Brooks</title>
-                <meta name='author' content='Ben Brooks'/>
             </Head>
             <Layout>
                 <h1>Home Page</h1>

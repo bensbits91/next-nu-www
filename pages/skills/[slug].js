@@ -5,14 +5,13 @@ import Layout from '../../components/Layout'
 import Post from '../../components/Post'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
 import ItemIcon from '../../components/ItemIcon'
-import { colors } from '../../styles/js/vars'
+import { colors } from '../../utils/cssvars'
 
 export default function SkillPage({ post, mdxSource }) {
     return (
         <>
             <Head>
                 <title>Ben Brooks - Skills - {post.title}</title>
-                <meta name='author' content='Ben Brooks' />
             </Head>
             <Layout>
                 <div className='post-header'>
