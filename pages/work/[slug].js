@@ -2,39 +2,27 @@ import { getPostBySlug, getAllPosts } from '../../utils/api'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import Related from '../../components/Related'
+import WorkPostHeader from '../../components/WorkPostHeader'
 import ImageOpt from '../../components/ImageOpt'
 import renderToString from 'next-mdx-remote/render-to-string'
 
-
 const components = { ImageOpt }
 
-
-
 export default function WorkPage({ post, mdxSource, skills }) {
+    const { title, description } = post
+
     return (
         <>
             <Head>
-                <title>Ben Brooks - Work - {post.title}</title>
+                <title>Ben Brooks - Work - {title}</title>
             </Head>
             <Layout>
-                <div className='post-header'>
-                    <div className='row'>
-                        <div className='col-8 col-12-medium'>
-                            <h1>{post.title}</h1>
-                            {post.description && <p className='description'>{post.description}</p>}
-                        </div>
-
-                        <div className='col-4 col-12-medium'>
-                            <h2>Built Using</h2>
-                            <Related items={skills} />
-                        </div>
-                    </div>
-                </div>
+                <WorkPostHeader title={title} description={description} skills={skills} />
                 <main>
                     <Post mdxSource={mdxSource} />
                 </main>
             </Layout>
+
             <style jsx>{`
                 h1 { margin-bottom: 0 }
                 h2 { margin-bottom: 18px }

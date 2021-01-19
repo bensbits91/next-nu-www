@@ -22,10 +22,8 @@ export default function ImageOpt({ path, sizeSet = 'full' }) {
     return (
         <div className={`img-wrap-${sizeSet}`}>
             <div className="image-container">
-                <img
-                    srcSet={sizes[sizeSet].srcSet}
-                    src={sizes[sizeSet].src}
-                />
+                <img srcSet={sizes[sizeSet].srcSet}
+                    src={sizes[sizeSet].src} />
             </div>
         </div>
     )
