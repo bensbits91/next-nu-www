@@ -10,8 +10,10 @@ export default function WorkIndex({ posts }) {
                 <title>Ben Brooks - Work</title>
             </Head>
             <Layout>
-                <h1>Work</h1>
-                <MdxList items={posts} />
+                <section>
+                    <h1>Work</h1>
+                    <MdxList items={posts} />
+                </section>
             </Layout>
         </>
     )

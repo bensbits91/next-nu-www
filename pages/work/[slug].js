@@ -14,28 +14,40 @@ export default function WorkPage({ post, mdxSource, skills }) {
             </Head>
             <Layout>
                 <div className='post-header'>
-                    <h1>{post.title}</h1>
-                    {post.description && (
-                        <p className='description'>{post.description}</p>
-                    )}
+                    <div className='row'>
+                        <div className='col-8 col-12-medium'>
+                            <h1>{post.title}</h1>
+                            {post.description && (
+                                <p className='description'>{post.description}</p>
+                            )}
+                        </div>
+
+                        <div className='col-4 col-12-medium'>
+                            <h2>Built Using</h2>
+                            <Related items={skills} />
+                        </div>
+                    </div>
                 </div>
                 <main>
                     <Post mdxSource={mdxSource} />
-                    <h2>Skills</h2>
-                    <Related items={skills} />
                     {post.image &&
-                        <><div className='img-wrap-small'>
+                        <>
+                            {/* <div className='img-wrap-small'>
                             <ImageOpt path={post.image} sizeSet='small' />
                         </div>
                         <div className='img-wrap-mid'>
                             <ImageOpt path={post.image} sizeSet='mid' />
-                        </div>
-                        <div className='img-wrap-full'>
-                            <ImageOpt path={post.image} sizeSet='full' />
-                        </div></>
-                    }
+                        </div> */}
+                            <div className='img-wrap-full'>
+                                <ImageOpt path={post.image} sizeSet='full' />
+                            </div>
+                        </>}
                 </main>
             </Layout>
+            <style jsx>{`
+                h1 { margin-bottom: 0 }
+                h2 { margin-bottom: 18px }
+            `}</style>
         </>
     )
 }

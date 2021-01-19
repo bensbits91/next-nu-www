@@ -16,7 +16,6 @@ export default function SkillPage({ post, mdxSource }) {
             <Layout>
                 <div className='post-header'>
                     <div className='row'>
-
                         <div className='col-9 col-12-medium'>
                             <h1>{post.title}</h1>
                             {post.description && (
