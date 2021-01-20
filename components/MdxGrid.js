@@ -15,8 +15,9 @@ export default function MdxGrid({ items }) {
                     }}
                 >
                     <div className='title'>{item.title}</div>
-                    <MdxListFlat items={item.skills} showIcon={true} showText={false} />
                     <ImageOpt path={item.thumb} sizeSet='mid' />
+                    <MdxListFlat items={item.skills} showIcon={true} showText={false} />
+                    {item.description && item.description}
                 </article>
             )}
         </div>

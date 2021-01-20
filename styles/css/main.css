@@ -78,7 +78,7 @@ input, select, textarea {
 .grid-wrap {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	grid-gap: 1em;
+	grid-gap: 2em;
 	grid-auto-flow: dense;
   }
 
@@ -88,24 +88,22 @@ input, select, textarea {
   
   .grid-wrap article {
 	background: #000;
-	/* border: 1px solid var(--main-mint); */
 	border-radius: 10px;
 	box-shadow:	0px 0px 6px 0px var(--main-mint);
 	cursor: pointer;
-	padding: 1em;
+	padding: 2em;
   }
   
 	.grid-wrap article .title {
 		color: var(--main-mint);
 	}
 
-	/* .grid-wrap article:hover .title {
+	.grid-wrap article:hover .title {
 		color: var(--main-pink);
-	} */
+	}
 	.grid-wrap article:hover {
 		background: #111;
-		/* border-color: var(--main-pink); */
-		box-shadow:	0px 0px 12px 0px var(--main-mint);
+		box-shadow:	0px 0px 12px 0px var(--main-pink);
 	}
 
 @media (max-width: 680px) {

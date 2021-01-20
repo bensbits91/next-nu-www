@@ -26,6 +26,7 @@ export function getStaticProps() {
         'slug',
         'pageType',
         'thumb',
+        'description',
         'skills',
     ]).filter(p => p.pageType === 'work')
 
