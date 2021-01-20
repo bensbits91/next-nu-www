@@ -3,7 +3,7 @@
 Strikes a balance between 
 - Simple content authoring
 - Lightweight, flexible stack
-- Facilitates frequent changes and maintenance
+- Support for frequent changes and maintenance
 
 ## Key Features
 
@@ -12,12 +12,11 @@ Strikes a balance between
 - Custom API for retrieving markdown files
 - Markdown parsed to HTML
 - Metadata (frontmatter) stored in markdown files
-- Auto-generated responsive images (srcsets and sizes)
-- Custom React components
+- Markdown can include JSX (MDX) so components can be embedded
+- Responsive image sets auto-generated at build-time
+- Custom React components (functional components with hooks)
 - Built with Node.js, Babel and Webpack
 
 ## Live Demo
 
-[Tests are auto-deployed to Vercel](https://vercel.com/bensbits91/next-mdx-portfolio)
-
-Live demo coming soon...
+[Auto-deployed to Vercel](https://vercel.com/bensbits91/next-mdx-portfolio)

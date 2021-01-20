@@ -1,35 +1,21 @@
-import renderToString from 'next-mdx-remote/render-to-string'
+import { getPostBySlug, getAllPosts } from '../../utils/api'
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import { getPostBySlug, getAllPosts } from '../../utils/api'
-import ItemIcon from '../../components/ItemIcon'
-import { colors } from '../../utils/cssvars'
+import SkillPostHeader from '../../components/SkillPostHeader'
+import renderToString from 'next-mdx-remote/render-to-string'
 
 export default function SkillPage({ post, mdxSource }) {
+    const { slug, title, description } = post
+
     return (
         <>
             <Head>
                 <title>Ben Brooks - Skills - {post.title}</title>
             </Head>
             <Layout>
-                <div className='post-header'>
-                    <div className='row'>
-
-                        <div className='col-9 col-12-medium'>
-                            <h1>{post.title}</h1>
-                            {post.description && (
-                                <p className='description'>{post.description}</p>
-                            )}
-                        </div>
-
-                        <div className='col-3 col-12-medium'>
-                            <ItemIcon slug={post.slug} size='12em' color={colors.mainPink} />
-                        </div>
-
-                    </div>
-                </div>
+                <SkillPostHeader slug={slug} title={title} description={description} />
                 <main>
                     <Post mdxSource={mdxSource} />
                     {post.link &&

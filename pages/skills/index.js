@@ -25,11 +25,9 @@ export function getStaticProps() {
         'slug',
         'pageType',
         'skillType',
-        'love',
         'level',
         'firstUsed',
         'lastUsed',
-        'icon',
     ]).filter(p => p.pageType === 'skills')
 
     return {

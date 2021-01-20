@@ -75,6 +75,48 @@ input, select, textarea {
 	appearance: none;
 }
 
+.grid-wrap {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 2em;
+	grid-auto-flow: dense;
+  }
+
+  .grid-wrap * {
+	transition: all 0.25s ease-in-out;
+  }
+  
+  .grid-wrap article {
+	background: #000;
+	border-radius: 10px;
+	box-shadow:	0px 0px 6px 0px var(--main-mint);
+	cursor: pointer;
+	padding: 2em;
+  }
+  
+	.grid-wrap article .title {
+		color: var(--main-mint);
+	}
+
+	.grid-wrap article:hover .title {
+		color: var(--main-pink);
+	}
+	.grid-wrap article:hover {
+		background: #111;
+		box-shadow:	0px 0px 12px 0px var(--main-pink);
+	}
+
+@media (max-width: 680px) {
+	.grid-wrap {
+	  display: flex;
+	  flex-direction: column;
+	}
+	.grid-wrap article {
+	  margin-bottom: 1em;
+	}
+  }
+  
+
 /* Basic */
 
 	@-ms-viewport {
@@ -2382,16 +2424,10 @@ input, select, textarea {
 
 			}
 
-/* Image Sizes */
+/* Responsive Images */
 
 .image-container img {
 	width: 100%;
-}
-.img-wrap-small {
-	width: 30%;
-}
-.img-wrap-mid {
-    width: 50%;
 }
 
 /* Table */
@@ -3578,3 +3614,42 @@ input, select, textarea {
 			}
 
 		}
+
+/* Posts */
+
+.post-header h1 { 
+	margin-bottom: 0 
+}
+.post-header h2 { 
+	margin-bottom: 18px 
+}
+
+/* MDX Lists */
+
+.mdx-list .col-6 {
+	border-top: 1px solid;
+	padding-top: 40px;
+}
+.mdx-sidebar {
+	text-align: right;
+}
+.mdx-list li {
+	list-style: none;
+	padding: 0;
+}
+.mdx-list .icon-wrap,
+.mdx-list-flat .icon-wrap {
+	padding-right: 20px;
+}
+.mdx-list a {
+    border-bottom: none;
+}
+
+.flat-list {
+    display: inline-block;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.icon-only-wrap {
+    margin-right: 12px;
+}

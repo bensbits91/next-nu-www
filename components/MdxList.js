@@ -13,10 +13,8 @@ export default function MdxList({ items }) {
             <ul className='actions stacked'>
                 {Object.keys(groupsForPage).map(g =>
                     <li key={g}>
-                        <a
-                            onClick={() => setGrouping(g)}
-                            className={g === grouping ? 'button small active disabled' : 'button small'}
-                        >
+                        <a onClick={() => setGrouping(g)}
+                            className={g === grouping ? 'button small active disabled' : 'button small'} >
                             {groupsForPage[g].optionText}
                         </a>
                     </li>
@@ -28,14 +26,11 @@ export default function MdxList({ items }) {
                 <div key={idx}>
                     <ul>
                         {items.map(item =>
-                            <li key={item.slug}
-                                className='asdf'>
-                                <Link
-                                    as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
-                                    href={`/${item.pageType}/[slug]`}
-                                >
+                            <li key={item.slug}>
+                                <Link as={`/${item.pageType}/${item.slug.replace(/\.mdx?$/, '')}`}
+                                    href={`/${item.pageType}/[slug]`} >
                                     <a>
-                                        <span className='iconWrap'>
+                                        <span className='icon-wrap'>
                                             <ItemIcon slug={item.slug} />
                                         </span>
                                         {item.title}
@@ -44,23 +39,15 @@ export default function MdxList({ items }) {
                             </li>
                         )}
                     </ul>
-
-                    <style jsx>{`
-                        li {
-                            list-style: none;
-                            padding: 0;
-                        }
-                        .iconWrap {
-                            padding-right: 20px;
-                        }
-                    `}</style>
                 </div>)
         }
 
     return (
         <div className='row'>
             <div className='col-8 col-12-medium'>
-                <div className='row mdxList'>
+                <div className='row mdx-list'>
+                    {!groupsForPage && aList(items, '1')}
+
                     {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
 
                         const filteredItems = function () {
@@ -109,23 +96,11 @@ export default function MdxList({ items }) {
                         )
                     })}
                 </div>
-
-                {!groupsForPage && aList(items, '1')}
             </div>
 
-            <div className='col-4 col-12-medium sidebar'>
+            <div className='col-4 col-12-medium mdx-sidebar'>
                 {groupSelect}
             </div>
-
-            <style jsx>{`
-                .mdxList .col-6 {
-                    border-top: 1px solid;
-                    padding-top: 40px;
-                }
-                .sidebar {
-                    text-align: right;
-                }
-            `}</style>
         </div>
     )
 }

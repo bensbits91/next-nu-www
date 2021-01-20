@@ -1,39 +1,26 @@
-import renderToString from 'next-mdx-remote/render-to-string'
+import { getPostBySlug, getAllPosts } from '../../utils/api'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import Related from '../../components/Related'
-import { getPostBySlug, getAllPosts } from '../../utils/api'
+import WorkPostHeader from '../../components/WorkPostHeader'
 import ImageOpt from '../../components/ImageOpt'
+import renderToString from 'next-mdx-remote/render-to-string'
+import { skillsets } from '../../utils/skillsets'
 
-export default function WorkPage({ post, mdxSource, skills }) {
+const components = { ImageOpt }
+
+export default function WorkPage({ post, mdxSource }) {
+    const { title, description, skills } = post
+
     return (
         <>
             <Head>
-                <title>Ben Brooks - Work - {post.title}</title>
+                <title>Ben Brooks - Work - {title}</title>
             </Head>
             <Layout>
-                <div className='post-header'>
-                    <h1>{post.title}</h1>
-                    {post.description && (
-                        <p className='description'>{post.description}</p>
-                    )}
-                </div>
+                <WorkPostHeader title={title} description={description} skills={skills} />
                 <main>
                     <Post mdxSource={mdxSource} />
-                    <h2>Skills</h2>
-                    <Related items={skills} />
-                    {post.image &&
-                        <><div className='img-wrap-small'>
-                            <ImageOpt path={post.image} sizeSet='small' />
-                        </div>
-                        <div className='img-wrap-mid'>
-                            <ImageOpt path={post.image} sizeSet='mid' />
-                        </div>
-                        <div className='img-wrap-full'>
-                            <ImageOpt path={post.image} sizeSet='full' />
-                        </div></>
-                    }
                 </main>
             </Layout>
         </>
@@ -47,12 +34,17 @@ export const getStaticProps = async ({ params }) => {
         'description',
         'content',
         'skills',
-        'image'
     ]),
 
-        mdxSource = await renderToString(post.content, { scope: post }),
+        mdxSource = await renderToString(post.content, { components, scope: post }),
 
-        skills = post.skills.split(',').map(s => {
+        isSkillset = post.skills.split('_')[0] === 'skillset',
+
+        skillset = isSkillset
+            ? skillsets[post.skills.split('_')[1]]
+            : post.skills,
+
+        skills = skillset.split(',').map(s => {
             const skillSlug = s.trim()
 
             return {
@@ -61,8 +53,10 @@ export const getStaticProps = async ({ params }) => {
             }
         })
 
+    post.skills = skills
+
     return {
-        props: { post, mdxSource, skills },
+        props: { post, mdxSource },
     }
 }
 
