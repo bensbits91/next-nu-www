@@ -46,6 +46,8 @@ export default function MdxList({ items }) {
         <div className='row'>
             <div className='col-8 col-12-medium'>
                 <div className='row mdx-list'>
+                    {!groupsForPage && aList(items, '1')}
+
                     {groupsForPage && groupsForPage[grouping].groups.map((g, idx) => {
 
                         const filteredItems = function () {
@@ -93,8 +95,6 @@ export default function MdxList({ items }) {
 
                         )
                     })}
-
-                {!groupsForPage && aList(items, '1')}
                 </div>
             </div>
 

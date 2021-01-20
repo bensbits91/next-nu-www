@@ -5,6 +5,7 @@ import Post from '../../components/Post'
 import WorkPostHeader from '../../components/WorkPostHeader'
 import ImageOpt from '../../components/ImageOpt'
 import renderToString from 'next-mdx-remote/render-to-string'
+import { skillsets } from '../../utils/skillsets'
 
 const components = { ImageOpt }
 
@@ -22,11 +23,6 @@ export default function WorkPage({ post, mdxSource, skills }) {
                     <Post mdxSource={mdxSource} />
                 </main>
             </Layout>
-
-            <style jsx>{`
-                h1 { margin-bottom: 0 }
-                h2 { margin-bottom: 18px }
-            `}</style>
         </>
     )
 }
@@ -38,12 +34,17 @@ export const getStaticProps = async ({ params }) => {
         'description',
         'content',
         'skills',
-        'image'
     ]),
 
         mdxSource = await renderToString(post.content, { components, scope: post }),
 
-        skills = post.skills.split(',').map(s => {
+        isSkillset = post.skills.split('_')[0] === 'skillset',
+
+        skillset = isSkillset
+            ? skillsets[post.skills.split('_')[1]]
+            : post.skills,
+
+        skills = skillset.split(',').map(s => {
             const skillSlug = s.trim()
 
             return {
@@ -51,6 +52,7 @@ export const getStaticProps = async ({ params }) => {
                 skillPage: getPostBySlug(skillSlug, ['title', 'pageType'])
             }
         })
+
 
     return {
         props: { post, mdxSource, skills },
