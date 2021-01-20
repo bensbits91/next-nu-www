@@ -59,8 +59,10 @@ export default function MdxList({ items }) {
                                     return items.filter(i => g.match.indexOf(i.level) > -1)
 
                                 case 'years':
-                                    return items.filter(i => g.match.indexOf(dayjs().year() - dayjs(i.firstUsed).year()) > -1)
-
+                                    return items.filter(i => g.match.indexOf(
+                                        (i.lastUsed ? dayjs(i.lastUsed).year() : dayjs().year()) - dayjs(i.firstUsed).year() // subtract year first used from EITHER year last used OR year now
+                                    ) > -1)
+                                    
                                 case 'lastUsed':
                                     return items.filter(i => (!i.lastUsed && g.match === dayjs().year()) || g.match === dayjs(i.lastUsed).year())
 
