@@ -9,8 +9,8 @@ import { skillsets } from '../../utils/skillsets'
 
 const components = { ImageOpt }
 
-export default function WorkPage({ post, mdxSource, skills }) {
-    const { title, description } = post
+export default function WorkPage({ post, mdxSource }) {
+    const { title, description, skills } = post
 
     return (
         <>
@@ -53,9 +53,10 @@ export const getStaticProps = async ({ params }) => {
             }
         })
 
+    post.skills = skills
 
     return {
-        props: { post, mdxSource, skills },
+        props: { post, mdxSource },
     }
 }
 

@@ -1,8 +1,8 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
-import MdxList from '../../components/MdxList'
 import MdxGrid from '../../components/MdxGrid'
-import { getAllPosts } from '../../utils/api'
+import { getPostBySlug, getAllPosts } from '../../utils/api'
+import { skillsets } from '../../utils/skillsets'
 
 export default function WorkIndex({ posts }) {
     return (
@@ -26,7 +26,27 @@ export function getStaticProps() {
         'slug',
         'pageType',
         'thumb',
+        'skills',
     ]).filter(p => p.pageType === 'work')
+
+    posts.map(p => {
+        const isSkillset = p.skills.split('_')[0] === 'skillset',
+
+            skillset = isSkillset
+                ? skillsets[p.skills.split('_')[1]]
+                : p.skills,
+
+            skills = skillset.split(',').map(s => {
+                const skillSlug = s.trim()
+
+                return {
+                    skillSlug: skillSlug,
+                    skillPage: getPostBySlug(skillSlug, ['title', 'pageType'])
+                }
+            })
+
+        p.skills = skills
+    })
 
     return {
         props: { posts }

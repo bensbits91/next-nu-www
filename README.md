@@ -12,7 +12,7 @@ Strikes a balance between
 - Custom API for retrieving markdown files
 - Markdown parsed to HTML
 - Metadata (frontmatter) stored in markdown files
-- Markdown can include JSX (MDX)
+- Markdown can include JSX (MDX) so components can be embedded
 - Responsive image sets auto-generated at build-time
 - Custom React components (functional components with hooks)
 - Built with Node.js, Babel and Webpack

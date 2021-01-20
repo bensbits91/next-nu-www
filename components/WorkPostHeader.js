@@ -14,11 +14,6 @@ export default function WorkPostHeader({ title, description, skills }) {
                     <Related items={skills} />
                 </div>
             </div>
-
-            <style jsx>{`
-                h1 { margin-bottom: 0 }
-                h2 { margin-bottom: 18px }
-            `}</style>
         </div>
     )
 }

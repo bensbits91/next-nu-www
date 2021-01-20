@@ -14,11 +14,6 @@ export default function SkillPostHeader({ title, description, slug }) {
                     <ItemIcon slug={slug} size='12em' color={colors.mainPink} />
                 </div>
             </div>
-
-            <style jsx>{`
-                h1 { margin-bottom: 0 }
-                h2 { margin-bottom: 18px }
-            `}</style>
         </div>
     )
 }

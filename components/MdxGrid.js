@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
+import MdxListFlat from './MdxListFlat'
 import ImageOpt from './ImageOpt'
 
 export default function MdxGrid({ items }) {
-    console.log('🚀 ~ MdxGrid ~ items', items);
     const router = useRouter()
 
     return (
@@ -11,13 +11,12 @@ export default function MdxGrid({ items }) {
                 <article
                     key={item.slug}
                     onClick={() => {
-                        console.log(item.slug)
                         router.push(`/work/${item.slug}`)
                     }}
                 >
                     <div className='title'>{item.title}</div>
+                    <MdxListFlat items={item.skills} showIcon={true} showText={false} />
                     <ImageOpt path={item.thumb} sizeSet='mid' />
-
                 </article>
             )}
         </div>

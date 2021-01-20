@@ -14,6 +14,7 @@ import {
 } from 'react-icons/fa'
 import {
     SiBabel,
+    SiD3DotJs,
     SiGithub,
     SiGraphql,
     SiJavascript,
@@ -36,6 +37,9 @@ export default function ItemIcon({ slug, size = '1em', color = 'inherit' }) {
 
         case 'css':
             return <FaCss3 size={size} color={color} />
+
+        case 'd3':
+            return <SiD3DotJs size={size} color={color} />
 
         case 'git':
             return <DiGitBranch size={size} color={color} />
