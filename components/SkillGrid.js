@@ -26,7 +26,6 @@ export default function SKillGrid({ items }) {
             </div> : <></>,
 
         skillList = (items, idx) => {
-            console.log('🚀 ~ SKillGrid ~ items', items);
             return (
                 <div key={idx}>
                     <ul>
