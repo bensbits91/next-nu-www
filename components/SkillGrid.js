@@ -8,7 +8,7 @@ import { colors } from '../utils/cssvars'
 export default function SKillGrid({ items }) {
     const groupsForPage = groups[items[0].pageType],
 
-        [grouping, setGrouping] = useState('skillType'),
+        [grouping, setGrouping] = useState('level'),
 
         groupSelect = groupsForPage ?
             <div className='submenu'>
@@ -41,8 +41,8 @@ export default function SKillGrid({ items }) {
                                         {item.title}
                                     </a>
                                 </Link>
-                                {item.love >= 9 && <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='fav' color={colors.mainPink} /></span></span>}
-                                {(item.live === 'dozens' || item.live === 'hundreds') && <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='freq' color={colors.mainYellow} /></span></span>}
+                                {item.love >= 9 && <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='fav' size='0.8em' color={colors.mainPink} /></span></span>}
+                                {(item.live === 'dozens' || item.live === 'hundreds') && <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='freq' size='0.8em' color={colors.mainYellow} /></span></span>}
                                 {skillDetails(yearsUsed(item.lastUsed, item.firstUsed))}
                             </li>
                         )}
@@ -54,7 +54,7 @@ export default function SKillGrid({ items }) {
 
         skillDetails = (years) =>
             <span className='skill-list-card-details' dangerouslySetInnerHTML={{
-                __html: `(${years === 0 ? 'learning&nbsp;now' : years === 1 ? years + '&nbsp;year' : years + '&nbsp;years'})`
+                __html: `(${years === 0 ? 'learning' : years === 1 ? years + '&nbsp;year' : years + '&nbsp;years'})`
             }} />
 
 

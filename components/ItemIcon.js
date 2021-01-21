@@ -1,4 +1,6 @@
-import { AiOutlineApi } from 'react-icons/ai'
+import {
+    AiOutlineApi, AiFillStar
+} from 'react-icons/ai'
 import { BsChevronDoubleLeft } from 'react-icons/bs'
 import {
     DiDatabase,
@@ -11,8 +13,7 @@ import {
     FaChevronRight,
     FaCss3,
     FaPhp,
-    FaNodeJs,
-    FaToolbox
+    FaNodeJs
 } from 'react-icons/fa'
 import { MdFavorite } from 'react-icons/md'
 import {
@@ -118,7 +119,7 @@ export default function ItemIcon({ slug, size = '1em', color = 'inherit' }) {
             return <MdFavorite size={size} color={color} />
 
         case 'freq':
-            return <FaToolbox size={size} color={color} />
+            return <AiFillStar size={size} color={color} />
 
         default:
             return <FaChevronRight size={size} color={color} />
