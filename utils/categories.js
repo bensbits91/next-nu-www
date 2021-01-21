@@ -62,7 +62,7 @@ export const groups = {
             optionText: 'Level of expertise',
             groups: [
                 {
-                    groupName: 'Expert',
+                    groupName: 'Advanced',
                     match: [8, 9, 10],
                 },
                 {
@@ -86,22 +86,10 @@ export const groups = {
         years: {
             optionText: 'Years of experience',
             groups: [
-                // {
-                //     groupName: '20 or more years',
-                //     match: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
-                // },
-                // {
-                //     groupName: '15 to 20 years',
-                //     match: [15, 16, 17, 18, 19],
-                // },
                 {
                     groupName: 'More than 5 years',
                     match: [5, 6, 7, 8, 9,10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29],
                 },
-                // {
-                //     groupName: '5 to 10 years',
-                //     match: [5, 6, 7, 8, 9],
-                // },
                 {
                     groupName: '3 to 5 years',
                     match: [3, 4],

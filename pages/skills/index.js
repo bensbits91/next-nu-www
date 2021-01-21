@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
-import MdxList from '../../components/MdxList'
+// import MdxList from '../../components/MdxList'
+import SkillGrid from '../../components/SkillGrid'
 import { getAllPosts } from '../../utils/api'
 
 export default function SkillIndex({ posts }) {
@@ -12,7 +13,7 @@ export default function SkillIndex({ posts }) {
             <Layout>
                 <section>
                     <h1>Skills</h1>
-                    <MdxList items={posts} />
+                    <SkillGrid items={posts} />
                 </section>
             </Layout>
         </>
