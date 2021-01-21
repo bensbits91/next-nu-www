@@ -104,14 +104,14 @@ export const groups = {
                 },
             ]
         },
-        lastUsed: {
-            optionText: 'Last used',
-            groups: yearsSince2004.map(y => (
-                {
-                    groupName: y === 2021 ? 'Using now' : 'Last used in ' + y,
-                    match: y
-                }
-            ))
-        },
+        // lastUsed: {
+        //     optionText: 'Last used',
+        //     groups: yearsSince2004.map(y => (
+        //         {
+        //             groupName: y === 2021 ? 'Using now' : 'Last used in ' + y,
+        //             match: y
+        //         }
+        //     ))
+        // },
     }
 }

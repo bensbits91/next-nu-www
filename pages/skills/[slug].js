@@ -38,6 +38,8 @@ export const getStaticProps = async ({ params }) => {
         'description',
         'content',
         'link',
+        'firstUsed',
+        'lastUsed',
     ]),
 
         mdxSource = await renderToString(post.content, { scope: post })

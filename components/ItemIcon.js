@@ -11,8 +11,10 @@ import {
     FaChevronRight,
     FaCss3,
     FaPhp,
-    FaNodeJs
+    FaNodeJs,
+    FaToolbox
 } from 'react-icons/fa'
+import { MdFavorite } from 'react-icons/md'
 import {
     SiBabel,
     SiD3DotJs,
@@ -111,6 +113,12 @@ export default function ItemIcon({ slug, size = '1em', color = 'inherit' }) {
 
         case 'navup':
             return <BsChevronDoubleLeft size={size} color={color} />
+
+        case 'fav':
+            return <MdFavorite size={size} color={color} />
+
+        case 'freq':
+            return <FaToolbox size={size} color={color} />
 
         default:
             return <FaChevronRight size={size} color={color} />
