@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
-import MdxGrid from '../../components/MdxGrid'
+import WorkGrid from '../../components/WorkGrid'
 import { getPostBySlug, getAllPosts } from '../../utils/api'
 import { skillsets } from '../../utils/skillsets'
 
@@ -13,7 +13,7 @@ export default function WorkIndex({ posts }) {
             <Layout>
                 <section>
                     <h1>Work</h1>
-                    <MdxGrid items={posts} />
+                    <WorkGrid items={posts} />
                 </section>
             </Layout>
         </>

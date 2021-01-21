@@ -10,6 +10,7 @@ export default function MdxGrid({ items }) {
             {items.map(item =>
                 <article
                     key={item.slug}
+                    className='clickable'
                     onClick={() => {
                         router.push(`/work/${item.slug}`)
                     }}

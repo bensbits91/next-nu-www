@@ -1,4 +1,7 @@
-import { AiOutlineApi } from 'react-icons/ai'
+import {
+    AiOutlineApi, AiFillStar
+} from 'react-icons/ai'
+import { BsChevronDoubleLeft } from 'react-icons/bs'
 import {
     DiDatabase,
     DiGitBranch,
@@ -12,6 +15,7 @@ import {
     FaPhp,
     FaNodeJs
 } from 'react-icons/fa'
+import { MdFavorite } from 'react-icons/md'
 import {
     SiBabel,
     SiD3DotJs,
@@ -25,6 +29,7 @@ import {
     SiReact,
     SiSass,
     SiTypescript,
+    SiVueDotJs,
     SiWebpack,
     SiWordpress,
     SiYarn
@@ -95,6 +100,9 @@ export default function ItemIcon({ slug, size = '1em', color = 'inherit' }) {
         case 'typescript':
             return <SiTypescript size={size} color={color} />
 
+        case 'vue':
+            return <SiVueDotJs size={size} color={color} />
+
         case 'webpack':
             return <SiWebpack size={size} color={color} />
 
@@ -103,6 +111,15 @@ export default function ItemIcon({ slug, size = '1em', color = 'inherit' }) {
 
         case 'yarn':
             return <SiYarn size={size} color={color} />
+
+        case 'navup':
+            return <BsChevronDoubleLeft size={size} color={color} />
+
+        case 'fav':
+            return <MdFavorite size={size} color={color} />
+
+        case 'freq':
+            return <AiFillStar size={size} color={color} />
 
         default:
             return <FaChevronRight size={size} color={color} />
