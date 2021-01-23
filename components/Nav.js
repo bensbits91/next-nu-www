@@ -28,6 +28,20 @@ export default function Nav() {
                         </a>
                     </Link>
                 </li>
+                <li>
+                    <Link href='/story'>
+                        <a className={router.pathname === '/story' ? 'active' : ''}>
+                            Story
+                        </a>
+                    </Link>
+                </li>
+                <li>
+                    <Link href='/hire'>
+                        <a className={router.pathname === '/hire' ? 'active' : ''}>
+                            Hire
+                        </a>
+                    </Link>
+                </li>
             </ul>
         </nav>
     )

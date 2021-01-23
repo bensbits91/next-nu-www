@@ -20,7 +20,7 @@ export default function WorkIndex({ posts }) {
     )
 }
 
-export function getStaticProps() {
+export async function getStaticProps() {
     const posts = getAllPosts([
         'title',
         'slug',
