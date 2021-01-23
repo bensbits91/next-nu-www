@@ -3281,8 +3281,13 @@ body.is-menu-visible #menu .close {
 
 /* Main */
 
-#main {
+#main { /* was this supposed to be .main? */
   padding: 0em 0 6em 0;
+}
+
+.main {
+  padding-bottom: 6em;
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 736px) {
@@ -3486,8 +3491,9 @@ body.is-menu-visible #menu .close {
 /* Footer */
 
 #footer {
+  background-color: var(--main-bg-darker);
+  border-top: 1px solid var(--main-yellow);
   padding: 5em 0 6em 0;
-  background-color: #f6f6f6;
 }
 
 #footer > .inner {

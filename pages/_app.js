@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Footer from '../components/Footer'
 import '../styles/css/main.css'
 import '../styles/css/fontawesome-all.min.css'
 
@@ -8,7 +9,10 @@ function MyApp({ Component, pageProps }) {
             <Head>
                 <meta name='author' content='Ben Brooks' />
             </Head>
-            <Component {...pageProps} />
+            <div id='wrapper'>
+                <Component {...pageProps} />
+                <Footer />
+            </div>
         </>
     )
 }

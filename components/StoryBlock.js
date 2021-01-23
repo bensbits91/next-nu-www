@@ -8,9 +8,9 @@ export default function StoryBlock({ post }) {
 
     return (
         <article key={slug} className='timeline-item'/* date-is={`${dateStart} - ${dateEnd}`} */>
-            <div className='title'>{orgName} {`- ${dateStart} - ${dateEnd}`}</div>
+            <div key='org-name' className='title'>{orgName} {`- ${dateStart} - ${dateEnd}`}</div>
             <h3>{title}</h3>
-            {skills && <div>
+            {skills && <div key='skill-icons'>
                 <MdxListFlat
                     items={skills}
                     showIcon={true}
@@ -18,7 +18,7 @@ export default function StoryBlock({ post }) {
                     isLink={true}
                 />
             </div>}
-            <div dangerouslySetInnerHTML={{ __html: htmlContent.renderedOutput }} />
+            <div key='story-body' dangerouslySetInnerHTML={{ __html: htmlContent.renderedOutput }} />
         </article>
     )
 }
