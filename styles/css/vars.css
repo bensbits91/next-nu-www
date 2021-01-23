@@ -1,12 +1,14 @@
 :root {
     --main-bg: #131516;
     --main-bg-darker: #0f1011;
+    --main-bg-lighter: #424344;
     --main-mint: #00feca;
     /* --main-pink: #f2849e; */
     --main-pink: #ca0098;
     --main-purple: #ca00fe;
     --main-red: #ca1010;
     --main-yellow: #feca00;
+    --main-yellow-opac: #feca0055;
 
     --main-lightgray: #cfcfcf;
 }
