@@ -13,13 +13,13 @@ export default function StoryIndex({ posts }) {
             </Head>
             <Layout>
                 <h1>My Story</h1>
-                <div className='timeline-group'>
+                <div key='professional-experience' className='timeline-group'>
                     <h2>Professional Experience</h2>
                     <div className='container'>
                         {posts.filter(p => p.pageType === 'job').map(post => <StoryBlock post={post} />)}
                     </div>
                 </div>
-                <div className='timeline-group'>
+                <div key='education' className='timeline-group'>
                     <h2>Education</h2>
                     <div className='container'>
                         {posts.filter(p => p.pageType === 'school').map(post => <StoryBlock post={post} />)}
