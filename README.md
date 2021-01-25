@@ -19,4 +19,4 @@ Strikes a balance between
 
 ## Live Demo
 
-[Auto-deployed to Vercel](https://vercel.com/bensbits91/next-mdx-portfolio)
+[Auto-deployed to Vercel](https://next-mdx-portfolio.vercel.app/)

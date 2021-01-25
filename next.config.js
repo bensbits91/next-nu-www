@@ -3,7 +3,6 @@ const path = require("path");
 
 const compose = require('next-compose')
 
-
 module.exports = compose([
     [withOptimizedImages, {
         responsive: {
@@ -12,7 +11,6 @@ module.exports = compose([
     }],
     {
       webpack: (config) => {
-        /**some special code */
         config.resolve.alias.images = path.join(__dirname, "public/images");
         return config
       }
