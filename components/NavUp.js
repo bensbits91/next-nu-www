@@ -14,8 +14,8 @@ export default function NavUp() {
                 case '/skills/[slug]':
                     return aLink('/skills/', 'All Skills')
 
-                case '/work/[slug]':
-                    return aLink('/work/', 'All Work')
+                case '/sharepoint-apps/[slug]':
+                    return aLink('/sharepoint-apps/', 'All SharePoint Apps')
 
                 default:
                     return aLink('/', 'Home')

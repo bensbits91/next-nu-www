@@ -1,10 +1,16 @@
-import Link from 'next/link'
-import ItemIcon from './ItemIcon'
+import Link from 'next/link';
+import ItemIcon from '../ItemIcon';
+import styles from './MdxListFlat.module.scss';
 
-export default function MdxListFlat({ items, showIcon = true, showText = true, isLink = false }) {
+export default function MdxListFlat({
+    items,
+    showIcon = true,
+    showText = true,
+    isLink = false
+}) {
 
     return (
-        <div className='mdx-list-flat'>
+        <div className={styles.flatList}>
             {items.map(item => {
                 const slug = item.skillSlug,
 
@@ -12,7 +18,7 @@ export default function MdxListFlat({ items, showIcon = true, showText = true, i
 
                     icon = showIcon ?
                         <span title={title}
-                            className={showText ? 'icon-wrap' : 'icon-only-wrap'}
+                            className={showText ? styles.iconWrap : styles.iconOnlyWrap}
                         >
                             <ItemIcon slug={slug} />
                         </span>
@@ -23,7 +29,7 @@ export default function MdxListFlat({ items, showIcon = true, showText = true, i
                     el = isLink ? <Link href={`/skills/${slug}`}><a>{icon}{text}</a></Link> : <>{icon}{text}</>
 
                 return (
-                    <span key={slug} className='flat-list-item'>
+                    <span key={slug} className={styles.flatListItem}>
                         {el}
                     </span>
                 )

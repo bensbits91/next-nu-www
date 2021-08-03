@@ -1,8 +1,7 @@
-import Head from 'next/head'
-import Layout from '../../components/Layout'
-// import MdxList from '../../components/MdxList'
-import SkillGrid from '../../components/SkillGrid'
-import { getAllPosts } from '../../utils/api'
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import SkillGrid from '../../components/skill-grid/SkillGrid';
+import { getAllPosts } from '../../utils/api';
 
 export default function SkillIndex({ posts }) {
     return (

@@ -1,0 +1,15 @@
+.iconWrapAttr {
+    margin-left: 10px;
+}
+
+.iconLegend {
+    height: 30px;
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+
+    .icon-wrap-attr {
+        margin-left: 30px;
+        margin-right: 10px;
+    }
+}

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import MdxListFlat from '../MdxListFlat';
+import MdxListFlat from '../flat-list/MdxListFlat';
 import ImageOpt from '../ImageOpt';
 import styles from './AppsGrid.module.scss';
 

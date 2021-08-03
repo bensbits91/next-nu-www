@@ -1,11 +1,9 @@
-import MdxListFlat from '../MdxListFlat';
+import MdxListFlat from '../flat-list/MdxListFlat';
 import Link from 'next/link';
 import styles from './AboutBlock.module.scss';
 
 export default function AboutBlock({ post }) {
-    const { slug, org, link, title, dateStart, dateEnd, skills, htmlContent } = post,
-
-        orgName = link ? <Link href={link}><a>{org}</a></Link> : org
+    const { slug, link, title, skills, htmlContent } = post;
 
     return (
         <article key={slug} className={styles.timelineItem}>
