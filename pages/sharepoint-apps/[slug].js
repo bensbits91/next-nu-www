@@ -1,13 +1,13 @@
-import { getPostBySlug, getAllPosts } from '../../utils/api'
-import Head from 'next/head'
-import Layout from '../../components/Layout'
-import Post from '../../components/Post'
-import AppsPostHeader from '../../components/AppsPostHeader'
-import ImageOpt from '../../components/ImageOpt'
-import renderToString from 'next-mdx-remote/render-to-string'
-import { skillsets } from '../../utils/skillsets'
+import { getPostBySlug, getAllPosts } from '../../utils/api';
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import Post from '../../components/Post';
+import AppsPostHeader from '../../components/AppsPostHeader';
+import ImageOpt from '../../components/ImageOpt';
+import renderToString from 'next-mdx-remote/render-to-string';
+import { skillsets } from '../../utils/skillsets';
 
-const components = { ImageOpt }
+const components = { ImageOpt };
 
 export default function AppPage({ post, mdxSource }) {
     const { title, description, skills } = post

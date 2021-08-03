@@ -1,4 +1,4 @@
-import Related from './Related'
+import Related from './related/Related';
 
 export default function WorkPostHeader({ title, description, skills }) {
     return (

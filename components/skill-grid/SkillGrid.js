@@ -1,9 +1,12 @@
-import { useState } from 'react'
-import Link from 'next/link'
-import { groups } from '../utils/categories'
-import dayjs from 'dayjs'
-import ItemIcon from './ItemIcon'
-import { colors } from '../utils/cssvars'
+import { useState } from 'react';
+import Link from 'next/link';
+import { groups } from '../../utils/categories';
+import dayjs from 'dayjs';
+import ItemIcon from '../ItemIcon';
+import { colors } from '../../utils/cssvars';
+import styles from './SkillGrid.module.scss';
+
+// DID NOT FINISH MIGRATING STYLE FROM CSS TO SCSS BECAUSE THIS COMPONENT IS NOT IN USE
 
 export default function SKillGrid({ items }) {
     const groupsForPage = groups[items[0].pageType],

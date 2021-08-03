@@ -1,9 +1,10 @@
-import Link from 'next/link'
-import ItemIcon from './ItemIcon'
+import Link from 'next/link';
+import ItemIcon from '../ItemIcon';
+import styles from './Related.module.scss';
 
 export default function Related({ items }) {
     return (
-        <div className='mdx-list'>
+        <div className={styles.mdxList}>
             <ul>
                 {items.map(item => {
                     if (item.skillPage) {
@@ -12,7 +13,7 @@ export default function Related({ items }) {
                                 <Link as={`/${item.skillPage.pageType}/${item.skillSlug}`}
                                     href={`/${item.skillPage.pageType}/[slug]`} >
                                     <a>
-                                        <span className='icon-wrap'>
+                                        <span className={styles.iconWrap}>
                                             <ItemIcon slug={item.skillSlug} />
                                         </span>
                                         {item.skillPage ? item.skillPage.title : item.skillSlug}

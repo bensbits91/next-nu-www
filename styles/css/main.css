@@ -3681,50 +3681,6 @@ body.is-menu-visible #menu .close {
 
 /* MDX Lists */
 
-.mdx-list .col-6 {
-  border-top: 1px solid;
-  padding-top: 40px;
-}
 .mdx-sidebar {
   text-align: right;
-}
-.mdx-list li {
-  list-style: none;
-  padding: 0;
-}
-.mdx-list a {
-  border-bottom: none;
-}
-
-/* Flat List */
-
-.flat-list-item {
-  display: inline-block;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-.flat-list-item a {
-  border-bottom: none;
-}
-.icon-only-wrap {
-  margin-right: 12px;
-}
-
-/* Icons */
-
-.icon-wrap {
-  padding-right: 20px;
-}
-.icon-wrap-attr {
-  margin-left: 10px;
-}
-.icon-legend {
-  height: 30px;
-  display: inline-block;
-  vertical-align: top;
-  white-space: nowrap;
-}
-.icon-legend .icon-wrap-attr {
-  margin-right: 10px;
-  margin-left: 30px;
 }
