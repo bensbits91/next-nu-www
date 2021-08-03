@@ -1,0 +1,46 @@
+@import "../../styles/sass/libs/palette";
+
+.gridWrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 2em;
+    grid-auto-flow: dense;
+
+    &.tight {
+        grid-gap: 1em;
+
+        article {
+            padding: 1em;
+        }
+    }
+
+    article {
+        background: $bgDarker;
+        border-radius: 10px;
+        box-shadow: 0px 0px 6px 0px $lightgray;
+        padding: 2em;
+
+        &.clickable {
+            box-shadow: 0px 0px 6px 0px $mint;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+
+            * {
+                transition: all 0.25s ease-in-out;
+            }
+
+            &:hover {
+                background: #111;
+                box-shadow: 0px 0px 12px 0px $pink;
+
+                .title {
+                    color: $pink;
+                }
+            }
+        }
+
+        .title {
+            color: $mint;
+        }
+    }
+}

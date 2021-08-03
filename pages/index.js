@@ -6,15 +6,15 @@ export default function Index() {
     return (
         <>
             <Head>
-                <title>Ben Brooks</title>
+                <title>SharePoint Apps by nuTandem</title>
             </Head>
             <Layout>
                 <h1>Home Page</h1>
-                <div>
+                {/* <div>
                     <Link href='/skills'><a>Skills</a></Link>
-                </div>
+                </div> */}
                 <div>
-                    <Link href='/work'><a>Work</a></Link>
+                    <Link href='/apps'><a>Apps</a></Link>
                 </div>
             </Layout>
         </>

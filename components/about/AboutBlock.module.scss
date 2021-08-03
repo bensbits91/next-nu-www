@@ -1,0 +1,41 @@
+@import "../../styles/sass/libs/palette";
+
+.timelineGroup {
+    margin: 0 20px 50px;
+
+    h2 {
+        color: $bgLighter;
+        font-size: 2em;
+        margin-bottom: 1em;
+    }
+}
+
+.timelineItem {
+    padding: 0.1em 2em 2em;
+    position: relative;
+    border-left: 2px dashed rgba(207, 207, 207, 0.3);
+
+    &:after {
+        background: $yellow;
+        border: 12px solid $yellowOpac55;
+        border-radius: 12px;
+        content: "";
+        display: block;
+        height: 10px;
+        left: -13px;
+        position: absolute;
+        top: 1em;
+        width: 10px;
+    }
+
+    .title {
+        font-size: 1.5em;
+    }
+
+    h3 {
+        color: $yellow;
+        font-size: 1.3em;
+        margin: 0.5em 0 0;
+        text-transform: none;
+    }
+}

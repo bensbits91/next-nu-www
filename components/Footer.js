@@ -7,19 +7,19 @@ export default function Footer() {
                     <form>
                         <div className="fields">
                             <div key='field-1' className="field half">
-                                <input disabled type="text" name="name" id="name" placeholder="Name" />
+                                <input /* disabled */ type="text" name="name" id="name" placeholder="Name" />
                             </div>
                             <div key='field-2' className="field half">
-                                <input disabled type="email" name="email" id="email" placeholder="Email" />
+                                <input /* disabled */ type="email" name="email" id="email" placeholder="Email" />
                             </div>
                             <div key='field-3' className="field">
                                 <div className="textarea-wrapper">
-                                    <textarea disabled name="message" id="message" placeholder="Message" rows="1"></textarea>
+                                    <textarea /* disabled */ name="message" id="message" placeholder="Message" rows="1" />
                                 </div>
                             </div>
                         </div>
                         <ul className="actions">
-                            <li><input disabled type="submit" value="Send" className="primary" /></li>
+                            <li><input /* disabled */ type="submit" value="Send" className="primary" /></li>
                         </ul>
                     </form>
                 </section>

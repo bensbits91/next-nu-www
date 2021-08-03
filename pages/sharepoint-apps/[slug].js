@@ -2,23 +2,23 @@ import { getPostBySlug, getAllPosts } from '../../utils/api'
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Post from '../../components/Post'
-import WorkPostHeader from '../../components/WorkPostHeader'
+import AppsPostHeader from '../../components/AppsPostHeader'
 import ImageOpt from '../../components/ImageOpt'
 import renderToString from 'next-mdx-remote/render-to-string'
 import { skillsets } from '../../utils/skillsets'
 
 const components = { ImageOpt }
 
-export default function WorkPage({ post, mdxSource }) {
+export default function AppPage({ post, mdxSource }) {
     const { title, description, skills } = post
 
     return (
         <>
             <Head>
-                <title>Ben Brooks - Work - {title}</title>
+                <title>SharePoint Apps by nuTandem - {title}</title>
             </Head>
             <Layout>
-                <WorkPostHeader title={title} description={description} skills={skills} />
+                <AppsPostHeader title={title} description={description} skills={skills} />
                 <main>
                     <Post mdxSource={mdxSource} />
                 </main>
@@ -62,7 +62,7 @@ export const getStaticProps = async ({ params }) => {
 
 export const getStaticPaths = async () => {
     const posts = getAllPosts(['slug', 'pageType'])
-        .filter(p => p.pageType === 'work')
+        .filter(p => p.pageType === 'app')
 
     return {
         paths: posts.map(post => {

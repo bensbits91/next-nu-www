@@ -1,19 +1,19 @@
-import Head from 'next/head'
-import Layout from '../../components/Layout'
-import WorkGrid from '../../components/WorkGrid'
-import { getPostBySlug, getAllPosts } from '../../utils/api'
-import { skillsets } from '../../utils/skillsets'
+import Head from 'next/head';
+import Layout from '../../components/Layout';
+import AppsGrid from '../../components/grid/AppsGrid';
+import { getPostBySlug, getAllPosts } from '../../utils/api';
+import { skillsets } from '../../utils/skillsets';
 
 export default function WorkIndex({ posts }) {
     return (
         <>
             <Head>
-                <title>Ben Brooks - Work</title>
+                <title>SharePoint Apps by nuTandem</title>
             </Head>
             <Layout>
                 <section>
-                    <h1>Work</h1>
-                    <WorkGrid items={posts} />
+                    <h1>SharePoint Apps</h1>
+                    <AppsGrid items={posts} />
                 </section>
             </Layout>
         </>
@@ -28,7 +28,7 @@ export async function getStaticProps() {
         'thumb',
         'description',
         'skills',
-    ]).filter(p => p.pageType === 'work')
+    ]).filter(p => p.pageType === 'app')
 
     posts.map(p => {
         const isSkillset = p.skills.split('_')[0] === 'skillset',

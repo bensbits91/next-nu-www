@@ -1,0 +1,1 @@
+export const standardMetaTitle = 'SharePoint Apps by nuTandem';
