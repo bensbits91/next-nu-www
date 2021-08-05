@@ -30,7 +30,7 @@ export default function Layout({ children }) {
             <header id='header'>
                 <Link href='/'>
                     <a className={router.pathname === '/' ? 'active' : ''}>
-                        <ImageOpt path={'ntLogo2018-600w-white.png'} sizeSet={'small'} />
+                        <ImageOpt path={'ntLogo2021-3colors-b-300w.png'} sizeSet={'small'} />
                     </a>
                 </Link>
                 <Nav />

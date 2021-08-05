@@ -14,14 +14,14 @@ export default function Index() {
                 <Section
                     h1Text='Modern SharePoint Apps'
                     content1='<p>Engage and empower your users... Enhance your sites... Next-level...</p>'
-                    imgSrc='n2018-300w.png'
+                    imgSrc='n2021-600w_2.png'
                     variant='hero'
                 />
                 <Section
                     bgColor='bgDarker'
                     h2Text='Popular apps...'
                     content1='<p>Classifieds...</p>'
-                    imgSrc='n2018-300w.png'
+                    imgSrc='n2021-pink-600w.png'
                     swap={true}
                     shape='slantBottomDown'
                 />
@@ -35,7 +35,7 @@ export default function Index() {
                     bgColor='bgDarker'
                     h2Text='Fast installation, friendly support...'
                     content1='<p>Need a good blurb here but just keep typing to make it longer blah</p>'
-                    imgSrc='n2018-300w.png'
+                    imgSrc='n2021-yellow-600w.png'
                     shape='pinchRight'
                 />
                 <Section
@@ -47,6 +47,7 @@ export default function Index() {
                     bgColor='bgDarker'
                     h2Text='Customizable...'
                     content1='<p>Colors, images, spacing, fonts, sizes... features... apps</p>'
+                    shape='slantTopUp'
                 />
                 <Section
                     h2Text='Why nuTandem?'
