@@ -23,8 +23,8 @@ export default function SKillGrid({ items }) {
                     </a>
                 )}
                 <span className='icon-legend'>
-                    <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='fav' color={colors.mainPink} /></span>personal favorite</span>
-                    <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='freq' color={colors.mainYellow} /></span>most used</span>
+                    <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='fav' color={colors.pink} /></span>personal favorite</span>
+                    <span className='fav'><span className='icon-wrap-attr'><ItemIcon slug='freq' color={colors.yellow} /></span>most used</span>
                 </span>
             </div> : <></>,
 
