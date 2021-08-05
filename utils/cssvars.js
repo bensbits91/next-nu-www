@@ -1,10 +1,9 @@
 export const colors = {
-    mainBg: '#131516',
-    mainBgDarker: '#0f1011',
-    mainMint: '#00feca',
-    // mainPink: '#f2849e',
-    mainPink: '#ca0098',
-    mainPurple: '#ca00fe',
-    mainRed: '#ca1010',
-    mainYellow: '#feca00',
+    bg: '#131516',
+    bgDarker: '#0f1011',
+    mint: '#00feca',
+    pink: '#ca0098',
+    purple: '#ca00fe',
+    red: '#ca1010',
+    yellow: '#feca00',
 }

@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import Link from 'next/link'
-import { groups } from '../utils/categories'
-import dayjs from 'dayjs'
-import ItemIcon from './ItemIcon'
+import { useState } from 'react';
+import Link from 'next/link';
+import { groups } from '../utils/categories';
+import dayjs from 'dayjs';
+import ItemIcon from './ItemIcon';
 
 export default function MdxList({ items }) {
     const groupsForPage = groups[items[0].pageType],
@@ -40,7 +40,7 @@ export default function MdxList({ items }) {
                         )}
                     </ul>
                 </div>)
-        }
+        };
 
     return (
         <div className='row'>
@@ -104,5 +104,5 @@ export default function MdxList({ items }) {
                 {groupSelect}
             </div>
         </div>
-    )
+    );
 }

@@ -1,12 +1,18 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './Nav.module.scss';
+// import styles from './Nav.module.scss';
 
 export default function Nav() {
-    const router = useRouter()
+    const router = useRouter();
+
+    const scrollToBottom = () => window.scrollTo({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: 'smooth'
+    });
 
     return (
-        <nav/*  id="menu" */ className={styles.nav}>
+        <nav/*  id="menu" */ /* className={styles.nav} */>
             <ul>
                 <li>
                     <Link href='/'>
@@ -29,12 +35,17 @@ export default function Nav() {
                         </a>
                     </Link>
                 </li>
-                <li>
+                {/* <li>
                     <Link href='/contact'>
                         <a className={router.pathname === '/contact' ? 'active' : ''}>
                             Contact
                         </a>
                     </Link>
+                </li> */}
+                <li>
+                    <a onClick={scrollToBottom}>
+                        Contact
+                    </a>
                 </li>
             </ul>
         </nav>

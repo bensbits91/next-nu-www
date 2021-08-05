@@ -1,0 +1,71 @@
+@import "../../styles/sass/libs/palette";
+
+.sectionOuter {
+    &.slantBottomDown {
+        clip-path: polygon(
+            0 0 /* left top */,
+            100% 0 /* right top */,
+            100% 100% /* right bottom */,
+            0 90% /* left bottom */
+        );
+        padding-bottom: 6em;
+    }
+
+    &.slantTopDown {
+        clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+        padding-top: 6em;
+    }
+
+    &.pinchRight {
+        clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+        padding-top: 6em;
+        padding-bottom: 6em;
+    }
+
+    .sectionWrap {
+        h1,
+        h2 {
+            margin: 0;
+        }
+
+        h2 {
+            color: $yellow;
+            letter-spacing: 0.2em;
+            text-transform: none;
+        }
+
+        @media (min-width: 400px) {
+            margin: 0 auto;
+            padding: 4em 0;
+            max-width: 400px;
+
+            &.hero {
+                margin-top: 8em;
+                margin-bottom: 4em;
+            }
+
+            &.flex {
+                align-items: center;
+                display: flex;
+                max-width: 1000px;
+
+                .article1 {
+                    width: 50%;
+                }
+
+                .article2 {
+                    width: 50%;
+                }
+
+                &.swap {
+                    .article1 {
+                        order: 1;
+                    }
+                    .article2 {
+                        order: 0;
+                    }
+                }
+            }
+        }
+    }
+}

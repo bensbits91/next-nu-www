@@ -11,7 +11,7 @@ export default function SkillPostHeader({ title, description, slug }) {
                 </div>
 
                 <div className='col-3 col-12-medium'>
-                    <ItemIcon slug={slug} size='12em' color={colors.mainPink} />
+                    <ItemIcon slug={slug} size='12em' color={colors.pink} />
                 </div>
             </div>
         </div>
